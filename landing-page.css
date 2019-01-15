@@ -1,7 +1,7 @@
 html,
 body {
   overflow-x: hidden;
-  min-width: 310px;
+  min-width: 312px;
 }
 
 * {
@@ -18,7 +18,7 @@ body {
   --logocol: #00b9ff;
   --hovercol: #00a4df;
   --buttoncol: #2ed06e;
-  --linkcol: #F1F4F7;
+  --linkcol: #f1f4f7;
   --darkblue: #253756;
 }
 
@@ -116,7 +116,8 @@ li {
   position: relative;
 }
 
-.dropLink:hover, #logInLink:hover {
+.dropLink:hover,
+#logInLink:hover {
   cursor: pointer;
   color: var(--logocol);
 }
@@ -137,7 +138,7 @@ li {
   margin-top: 15px;
   right: 0;
   border-radius: 3px;
-  box-shadow: 0 0 30px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.1);
 }
 
 .dropLinkContent::after {
@@ -155,7 +156,7 @@ li {
   border-radius: 3px;
   text-decoration: none;
   letter-spacing: 0.03em;
-  color: #283B60;
+  color: #283b60;
 }
 
 .dropLinkContent a:hover {
@@ -308,7 +309,8 @@ h1::after {
   color: var(--logocol);
 }
 
-#sendTab, #sendTab p {
+#sendTab,
+#sendTab p {
   background: var(--bgcol);
   color: white;
 }
@@ -357,10 +359,30 @@ h1::after {
 }
 
 #receiveValue {
-  margin-top: 18px;
+  margin-top: 6px;
 }
 
-#currButton {
+#insuffFunds {
+  display: none;
+  position: relative;
+  background: #FFDFDF;
+  border-radius: 0 0 3px 3px;
+}
+
+#insuffFunds::before {
+  content: "▲";
+  position: absolute;
+  margin: -16px 0 0 16px;
+  color: #FFDFDF;
+}
+
+#insuffFunds p {
+  padding: 5px 15px;
+  width: 99%;
+  color: #C73B3B;
+}
+
+.currButton {
   background: #2e4369;
   position: absolute;
   right: 0;
@@ -369,8 +391,7 @@ h1::after {
   height: 100%;
   cursor: pointer;
   border: none;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
+  border-radius: 0 3px 3px 0;
   text-align-last: center;
   font-size: 18px;
   font-weight: bold;
@@ -406,55 +427,46 @@ h1::after {
   margin-top: 120px;
 }
 
-#calcGrid {
+#newCalcGrid {
   display: grid;
-  grid-template-columns: 100px auto;
-  grid-tempate-rows: auto auto;
+  grid-template-columns: 110px auto;
+  grid-template-rows: 30px 0px 30px;
   margin-left: 30px;
 }
 
-#calcGrid p {
-  letter-spacing: 0.03em;
-  color: #d3d5d8;
+#feeButton {
+  position: relative;
+  display: inline-block;
+  margin: 16px 9px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--logocol);
 }
 
-#calcGrid select {
+#feeButton::before {
+  content: "▼ ";
+}
+
+#fee {
+  font-weight: bold;
+}
+
+.feeDetails {
+  visibility: hidden;
+}
+
+#newCalcGrid select {
   background: #2e4369;
   padding: 5px;
+  margin-top: -5px;
   margin-right: 3px;
-  align-self: start;
   cursor: pointer;
   border: none;
   border-radius: 2px;
   font-size: 13px;
 }
 
-#rightBox details {
-  position: relative;
-  margin: 18px 12px;
-}
-
-#rightBox details p {
-  margin: 19px 19px -11px 19px;
-  letter-spacing: 0.03em;
-  color: #d3d5d8;
-}
-
-#rightBox summary {
-  cursor: pointer;
-  font-weight: bold;
-  color: var(--logocol);
-}
-
-#rightBox summary:focus {
-  outline: none;
-}
-
-/* #rightBox summary::-webkit-details-marker {
-display: none;
-} */
-
-#calcGrid a {
+#newCalcGrid a {
   text-decoration: none;
   border-bottom: 1px dotted var(--logocol);
   color: #d3d5d8;
@@ -522,7 +534,9 @@ display: none;
 
   #introDetails,
   #HIWlaptopButton,
-  #accBox, #bgsquare, #bgcircle {
+  #accBox,
+  #bgsquare,
+  #bgcircle {
     display: none;
   }
 
@@ -578,26 +592,22 @@ display: none;
   }
 
   p,
-  #calcGrid {
+  #newCalcGrid {
     font-size: 13px;
   }
 
-  #calcGrid select {
+  #newCalcGrid select {
+    margin-top: 0px;
     font-size: 12px;
   }
 
-  #calcGrid {
-    grid-template-columns: 70px auto;
-    grid-row-gap: 7px;
+  #newCalcGrid {
+    grid-template-columns: 88px auto;
     align-items: center;
   }
 
-  #rightBox details {
-    margin-bottom: 14px;
-  }
-
-  #rightBox details p {
-    margin-bottom: -5px;
+  #feeButton {
+    margin-left: 11px;
   }
 
   #doubleButtons {
@@ -608,7 +618,7 @@ display: none;
   #getStartedButton {
     margin: 0 0 10px 0;
   }
-  
+
   #HIWmobileButton {
     margin-top: -14px;
   }
@@ -622,7 +632,7 @@ display: none;
   #leftBox {
     padding: 0 3%;
   }
-  
+
   #calculator {
     margin: 34px 8px;
   }

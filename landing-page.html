@@ -1,0 +1,183 @@
+<head>
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- Background (holds nav & hero page) -->
+  <div id="bg">
+    <span id="bgsquare"></span>
+    <span id="bgcircle"></span>
+
+    <!-- Navigation bar -->
+    <nav id="navbar">
+      <a href="#"><div id="mobileMenuIcon"></div></a>
+      <a href="#">
+        <div id="logoBox"></div>
+      </a>
+
+      <ul id="navLinks">
+        <li class="dropLink">Send money
+          <div class="dropLinkContent">
+            <a href="#">Send money</a>
+            <a href="#">Get the real exchange rate</a>
+            <a href="#">See our coverage</a>
+            <a href="#">Pricing</a>
+          </div>
+        </li>
+
+        <li class="dropLink">Receive money
+          <div class="dropLinkContent">
+            <a href="#">Get a borderless account</a>
+            <a href="#">Get international bank details</a>
+            <a href="#">See how it works</a>
+            <a href="#">Pricing</a>
+          </div>
+        </li>
+
+        <li class="dropLink">Debit card
+          <div class="dropLinkContent">
+            <a href="#">Get a borderless account</a>
+            <a href="#">Get a TransferWise Mastercard®</a>
+            <a href="#">Compare TransferWise to banks</a>
+            <a href="#">See how it works</a>
+            <a href="#">Pricing</a>
+          </div>
+        </li>
+
+        <li class="dropLink">Business
+          <div class="dropLinkContent">
+            <a href="#">TransferWise for business</a>
+            <a href="#">Freelancers</a>
+            <a href="#">E-commerce</a>
+            <a href="#">Enterprise</a>
+            <a href="#">Business pricing</a>
+          </div>
+        </li>
+
+        <li class="dropLink">About
+          <div class="dropLinkContent">
+            <a href="#">Help</a>
+            <a href="#">Pricing</a>
+            <a href="#">Mid-market rate</a>
+            <a href="#">Our story</a>
+          </div>
+        </li>
+
+        <a href="#">
+          <li id="logInLink">Log in</li>
+        </a>
+
+        <a href="#">
+          <li id="signupLink">Sign up</li>
+        </a>
+      </ul>
+    </nav>
+
+    <!-- Main hero page content -->
+    <main>
+      <section id="heroPage">
+        <!-- Left side of hero page -->
+        <div id="leftBox">
+          <header autofocus>
+            <h1>Bye bye bank fees, hello world</h1>
+          </header>
+
+          <span id="introDetails"><p>You could <a href="#" target="_blank">save up to 8x</a> compared to a bank when you send money, get paid in other currencies, or spend abroad on the TransferWise debit Mastercard.</p></span>
+
+          <button class="howItWorks" id="HIWlaptopButton">⯈ How it works</button>
+
+          <div id="accBox">
+            <figure id="tuvacc" class="accreditation">
+              <img src="https://transferwise.com/static/images/index/logos/tuv_sud.png" alt="TÜV standards icon">
+              <figcaption>TÜV & FCA approved<br>
+                <a href="#">The report</a></figcaption>
+            </figure>
+
+            <figure id="custacc" class="accreditation">
+              <img src="https://daw291njkc3ao.cloudfront.net/conversion/landing-illustrations/customers.svg" alt="Happy customer icon">
+              <figcaption>Over 4 million customers<br>
+                <a href="#">Hear from them</a></figcaption>
+            </figure>
+          </div>
+        </div>
+
+        <!-- Right side of hero page -->
+        <div id="rightBox">
+          <div id="tabs">
+            <a href="#" id="sendTab" class="tab">
+              <p class="tabIcon">̥↗</p>
+              <p class="tabText">Send money</p>
+            </a>
+            <a href="#" id="receiveTab" class="tab">
+              <p class="tabIcon">̥↙</p>
+              <p class="tabText">Receive money</p>
+            </a>
+            <a href="#" id="debitTab" class="tab">
+              <p class="tabIcon">⇄</p>
+              <p class="tabText">Debit card</p>
+            </a>
+          </div>
+
+          <!-- Rightbox calculator-->
+          <div id="calculator">
+
+            <div id="sendValue" class="cashBox">
+              <select id="currButton">
+              <option value="EUR" selected>🇪🇺 EUR</option>
+              <option value="GBP">🇬🇧 GBP</option>
+              <option value="USD">🇺🇸 USD</option>
+            </select>
+
+              <p>You send</p>
+              <input type="text" placeholder="1,000" onfocus="this.placeholder=''" onblur="this.placeholder='1,000'"></input>
+            </div>
+
+            <div id="bgline">
+              <div id="bgCir1" class="bgLineCircle"></div>
+              <div id="bgCir2" class="bgLineCircle"></div>
+              <div id="bgCir3" class="bgLineCircle"></div>
+            </div>
+
+            <details>
+              <summary>Show fee breakdown</summary>
+              <p>994.22 EUR : Amount we’ll convert</p>
+            </details>
+
+            <div id="calcGrid">
+              <p style="font-weight: bold; color: white;">- 5.78 EUR</p>
+              <div><select><option>Fast and easy transfer</option>
+            <option>Low cost transfer</option>
+            </select> fee</div>
+              <p>0.89840</p>
+              <p><a href="#">Guaranteed rate</a> (80 hrs)</p>
+            </div>
+
+            <div id="receiveValue" class="cashBox">
+              <select id="currButton">
+            <option value="EUR">🇪🇺 EUR</option>
+            <option value="GBP" selected>🇬🇧 GBP</option>
+            <option value="USD">🇺🇸 USD</option>
+          </select>
+
+              <p>Recipient gets</p>
+              <input type="text" placeholder="893.21" onfocus="this.placeholder=''" onblur="this.placeholder='893.21'"></input>
+            </div>
+
+            <div id="savings">
+              <p>You could save up to: <b>40.86 EUR</b><br>Should arrive <b>in seconds!</b></p>
+            </div>
+
+            <div id="doubleButtons">
+              <button id="compareButton">Compare price</button>
+              <button id="getStartedButton">Get started</button>
+            </div>
+
+            <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
+          </div>
+        </div>
+
+      </section>
+    </main>
+  </div>
+
+</body>

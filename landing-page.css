@@ -1,0 +1,629 @@
+html,
+body {
+  overflow-x: hidden;
+  min-width: 310px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: Lato;
+  letter-spacing: 0.06em;
+  color: white;
+}
+
+:root {
+  --bgcol: #37517e;
+  --shapecol: #405f96;
+  --logocol: #00b9ff;
+  --hovercol: #00a4df;
+  --buttoncol: #2ed06e;
+  --linkcol: #F1F4F7;
+  --darkblue: #253756;
+}
+
+/* Background */
+
+#bg {
+  position: relative;
+  background: var(--bgcol);
+  min-height: 100vh;
+  width: 100%;
+  overflow: hidden;
+}
+
+#bgsquare {
+  background: var(--shapecol);
+  position: absolute;
+  bottom: -20px;
+  width: 550px;
+  height: 46vh;
+  z-index: 0;
+}
+
+#bgsquare::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  border-left: 120px solid transparent;
+  border-bottom: 45vh solid var(--bgcol);
+}
+
+#bgcircle {
+  background: var(--shapecol);
+  position: absolute;
+  left: 60%;
+  bottom: -5vh;
+  height: 45vh;
+  width: 90vh;
+  border-top-left-radius: 90vh;
+  border-top-right-radius: 90vh;
+  z-index: 0;
+}
+
+#bgcircle::after {
+  content: "";
+  background: white;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+}
+
+/* Navigation bar */
+#navbar {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+  z-index: 2;
+}
+
+#mobileMenuIcon {
+  display: none;
+  float: left;
+  background: url(https://archive.li/ktlVH/ea77e5dbf135f7cdb101213a677a98ba8c1f7c55.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 6px -36px 0 -3.5%;
+  height: 32px;
+  width: 32px;
+}
+
+#logoBox {
+  float: left;
+  background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TransferWise_logo.svg/2000px-TransferWise_logo.svg.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  margin: 13px -32px 0 0;
+  height: 20px;
+  width: 112px;
+}
+
+#navLinks {
+  float: right;
+  list-style: none;
+  font-size: 13px;
+}
+
+li {
+  display: inline-block;
+  padding: 17px 12px;
+  margin: 0 -2px;
+}
+
+.dropLink {
+  position: relative;
+}
+
+.dropLink:hover, #logInLink:hover {
+  cursor: pointer;
+  color: var(--logocol);
+}
+
+.dropLink:hover .dropLinkContent {
+  display: block;
+}
+
+.dropLink::after {
+  content: " ▼";
+}
+
+.dropLinkContent {
+  display: none;
+  position: absolute;
+  background: white;
+  padding: 8px;
+  margin-top: 15px;
+  right: 0;
+  border-radius: 3px;
+  box-shadow: 0 0 30px 8px rgba(0,0,0,0.1);
+}
+
+.dropLinkContent::after {
+  content: "▲";
+  position: absolute;
+  top: -11px;
+  right: 12px;
+  color: white;
+}
+
+.dropLinkContent a {
+  display: block;
+  padding: 16px 12px;
+  white-space: nowrap;
+  border-radius: 3px;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  color: #283B60;
+}
+
+.dropLinkContent a:hover {
+  background: var(--linkcol);
+}
+
+#signupLink {
+  background: #8797b2;
+  padding: 6px 12px;
+  margin-right: 0px;
+  margin-left: -4px;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+#signupLink:hover {
+  background: var(--darkblue);
+  color: var(--logocol);
+}
+
+/* Main content: Hero page */
+#heroPage {
+  position: relative;
+  margin: 14vh auto 34px auto;
+  width: 90%;
+  max-width: 1100px;
+  z-index: 1;
+}
+
+#leftBox {
+  float: left;
+  display: flex;
+  flex-direction: column;
+  margin-right: 2%;
+  width: 48%;
+}
+
+h1 {
+  font-size: 36px;
+}
+
+h1::after {
+  content: ".";
+  color: var(--logocol);
+}
+
+#introDetails {
+  margin: 4vh 0 6vh 0;
+  line-height: 22px;
+}
+
+#introDetails p {
+  letter-spacing: 0.04em;
+}
+
+#leftBox a {
+  color: var(--logocol);
+  font-weight: bold;
+}
+
+.howItWorks {
+  background: var(--bgcol);
+  padding: 12px;
+  line-height: 16px;
+  width: 150px;
+  border-radius: 3px;
+  border: 1px solid var(--logocol);
+  color: var(--logocol);
+  font-weight: bold;
+}
+
+.howItWorks:hover {
+  background: var(--logocol);
+  color: white;
+  cursor: pointer;
+}
+
+#accBox {
+  margin: 100px 0 0 0;
+  width: 100%;
+  line-height: 22px;
+  font-weight: bold;
+}
+
+.accreditation {
+  width: 50%;
+  margin: 6px 0;
+}
+
+.accreditation figcaption {
+  margin: 3px;
+  width: 210px;
+}
+
+.accreditation img {
+  float: left;
+  margin-right: 10px;
+  height: 70px;
+  width: 70px;
+}
+
+#tuvacc {
+  float: left;
+}
+
+#custacc {
+  float: right;
+}
+
+/* Right side of page */
+#rightBox {
+  background: var(--bgcol);
+  float: right;
+  margin: 0 0 34px 2%;
+  width: 48%;
+  overflow: hidden;
+  border-radius: 6px;
+  box-shadow: -2px -1px 40px 0 rgb(0, 0, 0, 0.15),
+    1px 3px 30px 0 rgb(55, 81, 126, 0.7);
+}
+
+/* Tab section uses JavaScript so I've hard-coded a selected tab instead until I've learnt how HTML, CSS and JS interact*/
+#tabs {
+  background: #253655;
+  display: flex;
+  justify-content: space-between;
+}
+
+.tab {
+  background: linear-gradient(35deg, #25375f, #2c4060);
+  padding: 20px 0;
+  line-height: 27px;
+  text-align: center;
+  text-decoration: none;
+  flex: 1;
+}
+
+.tab:hover {
+  background: var(--darkblue);
+}
+
+.tabText {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  color: white;
+}
+
+.tabIcon {
+  color: var(--logocol);
+}
+
+#sendTab, #sendTab p {
+  background: var(--bgcol);
+  color: white;
+}
+
+#calculator {
+  position: relative;
+  margin: 34px;
+}
+
+.cashBox {
+  background: white;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  border-radius: 4px;
+}
+
+.cashBox:hover {
+  box-shadow: 0 0 1px 1px var(--logocol);
+}
+
+.cashBox p {
+  padding: 9px 7px 0 7px;
+  margin-left: 2px;
+  width: 70%;
+  font-size: 13px;
+  color: var(--shapecol);
+}
+
+.cashBox input[type="text"] {
+  padding: 0 7px 9px 7px;
+  width: 70%;
+  color: #2e4369;
+  font-size: 22px;
+  border: none;
+  border-radius: 4px;
+}
+
+.cashBox input[type="text"]::placeholder {
+  color: #2e4369;
+  opacity: 1;
+}
+
+.cashBox input[type="text"]:focus {
+  outline: none;
+}
+
+#receiveValue {
+  margin-top: 18px;
+}
+
+#currButton {
+  background: #2e4369;
+  position: absolute;
+  right: 0;
+  padding: 18.5px 0;
+  width: 30%;
+  height: 100%;
+  cursor: pointer;
+  border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  text-align-last: center;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+#bgline {
+  background: #253655;
+  position: absolute;
+  left: 16px;
+  top: 61px;
+  width: 2px;
+  height: 150px;
+}
+
+.bgLineCircle {
+  background: #253655;
+  position: absolute;
+  margin-left: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+#bgCir1 {
+  margin-top: 60px;
+}
+
+#bgCir2 {
+  margin-top: 90px;
+}
+
+#bgCir3 {
+  margin-top: 120px;
+}
+
+#calcGrid {
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-tempate-rows: auto auto;
+  margin-left: 30px;
+}
+
+#calcGrid p {
+  letter-spacing: 0.03em;
+  color: #d3d5d8;
+}
+
+#calcGrid select {
+  background: #2e4369;
+  padding: 5px;
+  margin-right: 3px;
+  align-self: start;
+  cursor: pointer;
+  border: none;
+  border-radius: 2px;
+  font-size: 13px;
+}
+
+#rightBox details {
+  position: relative;
+  margin: 18px 12px;
+}
+
+#rightBox details p {
+  margin: 19px 19px -11px 19px;
+  letter-spacing: 0.03em;
+  color: #d3d5d8;
+}
+
+#rightBox summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--logocol);
+}
+
+#rightBox summary:focus {
+  outline: none;
+}
+
+/* #rightBox summary::-webkit-details-marker {
+display: none;
+} */
+
+#calcGrid a {
+  text-decoration: none;
+  border-bottom: 1px dotted var(--logocol);
+  color: #d3d5d8;
+}
+
+#savings p {
+  margin: 20px 0;
+  line-height: 22px;
+}
+
+#doubleButtons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 34px;
+}
+
+#compareButton,
+#getStartedButton {
+  flex: 1;
+  padding: 13px;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+  font-weight: bold;
+}
+
+#compareButton {
+  background: var(--logocol);
+  margin-right: 10px;
+}
+
+#compareButton:hover {
+  background: #00a4df;
+}
+
+#getStartedButton {
+  background: var(--buttoncol);
+  margin-left: 10px;
+}
+
+#getStartedButton:hover {
+  background: #28b862;
+}
+
+#HIWmobileButton {
+  display: none;
+  margin: auto;
+}
+
+/* Media queries */
+@media only screen and (max-width: 925px) {
+  #logoBox {
+    background-image: url(https://s3-us-west-1.amazonaws.com/chuladoblog/blog/wp-content/uploads/20181030041255/transferwise-logo.png);
+    width: 22px;
+    height: 22px;
+  }
+
+  li {
+    padding-left: 0;
+  }
+
+  h1 {
+    margin-bottom: 30px;
+  }
+
+  #introDetails,
+  #HIWlaptopButton,
+  #accBox, #bgsquare, #bgcircle {
+    display: none;
+  }
+
+  #heroPage {
+    width: 80%;
+  }
+
+  #leftBox {
+    float: none;
+    width: 100%;
+    align-items: center;
+  }
+
+  #rightBox {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+
+  #HIWmobileButton {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 710px) {
+  #logoBox {
+    background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TransferWise_logo.svg/2000px-TransferWise_logo.svg.png);
+    height: 20px;
+    width: 112px;
+  }
+
+  #mobileMenuIcon {
+    display: inline-block;
+  }
+
+  #logoBox {
+    margin-left: 32px;
+  }
+
+  .dropLink,
+  #logInLink {
+    display: none;
+  }
+
+  #signupLink {
+    margin: 11px 0;
+  }
+
+  h1 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 38px;
+  }
+
+  p,
+  #calcGrid {
+    font-size: 13px;
+  }
+
+  #calcGrid select {
+    font-size: 12px;
+  }
+
+  #calcGrid {
+    grid-template-columns: 70px auto;
+    grid-row-gap: 7px;
+    align-items: center;
+  }
+
+  #rightBox details {
+    margin-bottom: 14px;
+  }
+
+  #rightBox details p {
+    margin-bottom: -5px;
+  }
+
+  #doubleButtons {
+    flex-direction: column;
+  }
+
+  #compareButton,
+  #getStartedButton {
+    margin: 0 0 10px 0;
+  }
+  
+  #HIWmobileButton {
+    margin-top: -14px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  #heroPage {
+    width: 100%;
+  }
+
+  #leftBox {
+    padding: 0 3%;
+  }
+  
+  #calculator {
+    margin: 34px 8px;
+  }
+}

@@ -10,7 +10,9 @@
 
     <!-- Navigation bar -->
     <nav id="navbar">
-      <a href="#"><div id="mobileMenuIcon"></div></a>
+      <a href="#">
+        <div id="mobileMenuIcon"></div>
+      </a>
       <a href="#">
         <div id="logoBox"></div>
       </a>
@@ -122,62 +124,73 @@
           <div id="calculator">
 
             <div id="sendValue" class="cashBox">
-              <select id="currButton">
-              <option value="EUR" selected>🇪🇺 EUR</option>
-              <option value="GBP">🇬🇧 GBP</option>
-              <option value="USD">🇺🇸 USD</option>
-            </select>
+              <select id="inCurr" name="inCurr" class="currButton">
+                <option name="inCurr" value="EUR" selected>🇪🇺 EUR</option>
+                <option name="inCurr" value="GBP">🇬🇧 GBP</option>
+                <option name="inCurr" value="USD">🇺🇸 USD</option>
+                <option name="inCurr" value="INR">🇮🇳 INR</option>
+              </select>
 
               <p>You send</p>
-              <input type="text" placeholder="1,000" onfocus="this.placeholder=''" onblur="this.placeholder='1,000'"></input>
+              <input id="inputValue" oninput="calc(this.value)" type="text" onfocus="this.placeholder=''" onblur="resetInput(this.value)"></input>
+          </div>
+
+          <div id="bgline">
+            <div id="bgCir1" class="bgLineCircle"></div>
+            <div id="bgCir2" class="bgLineCircle"></div>
+            <div id="bgCir3" class="bgLineCircle"></div>
+          </div>
+
+          <!-- Fee breakdown section -->
+          <div id="feeText">
+            <p id="feeButton">Show fee breakdown</p>
+
+            <div id="newCalcGrid">
+              <p id="fee"></p>
+              <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
+                <option value="0.003">Low cost transfer</option>
+                </select> fee</p>
+
+              <p id="convert" class="feeDetails"></p>
+              <p class="feeDetails">Amount we'll convert</p>
+
+              <p id="exRate"></p>
+              <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
             </div>
+          </div>
 
-            <div id="bgline">
-              <div id="bgCir1" class="bgLineCircle"></div>
-              <div id="bgCir2" class="bgLineCircle"></div>
-              <div id="bgCir3" class="bgLineCircle"></div>
-            </div>
+          <div id="receiveValue" class="cashBox">
+            <select id="recCurr" name="recCurr" class="currButton">
+              <option name="recCurr" value="EUR">🇪🇺 EUR</option>
+              <option name="recCurr" value="GBP" selected>🇬🇧 GBP</option>
+              <option name="recCurr" value="USD">🇺🇸 USD</option>
+              <option name="recCurr" value="INR">🇮🇳 INR</option>
+            </select>
 
-            <details>
-              <summary>Show fee breakdown</summary>
-              <p>994.22 EUR : Amount we’ll convert</p>
-            </details>
+            <p id="receiveText">Recipient gets</p>
+            <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
 
-            <div id="calcGrid">
-              <p style="font-weight: bold; color: white;">- 5.78 EUR</p>
-              <div><select><option>Fast and easy transfer</option>
-            <option>Low cost transfer</option>
-            </select> fee</div>
-              <p>0.89840</p>
-              <p><a href="#">Guaranteed rate</a> (80 hrs)</p>
-            </div>
-
-            <div id="receiveValue" class="cashBox">
-              <select id="currButton">
-            <option value="EUR">🇪🇺 EUR</option>
-            <option value="GBP" selected>🇬🇧 GBP</option>
-            <option value="USD">🇺🇸 USD</option>
-          </select>
-
-              <p>Recipient gets</p>
-              <input type="text" placeholder="893.21" onfocus="this.placeholder=''" onblur="this.placeholder='893.21'"></input>
-            </div>
-
-            <div id="savings">
-              <p>You could save up to: <b>40.86 EUR</b><br>Should arrive <b>in seconds!</b></p>
-            </div>
-
-            <div id="doubleButtons">
-              <button id="compareButton">Compare price</button>
-              <button id="getStartedButton">Get started</button>
-            </div>
-
-            <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
+          <div id="insuffFunds">
+            <p id="insuffFundsText"></p>
           </div>
         </div>
 
-      </section>
-    </main>
-  </div>
+
+        <div id="savings">
+          <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
+        </div>
+
+        <div id="doubleButtons">
+          <button id="compareButton">Compare price</button>
+          <button id="getStartedButton">Get started</button>
+        </div>
+
+        <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
+        </div>
+      </div>
+
+    </section>
+  </main>
+</div>
 
 </body>

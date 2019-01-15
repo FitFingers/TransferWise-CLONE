@@ -128,69 +128,67 @@
                 <option name="inCurr" value="EUR" selected>🇪🇺 EUR</option>
                 <option name="inCurr" value="GBP">🇬🇧 GBP</option>
                 <option name="inCurr" value="USD">🇺🇸 USD</option>
-                <option name="inCurr" value="INR">🇮🇳 INR</option>
               </select>
 
               <p>You send</p>
               <input id="inputValue" oninput="calc(this.value)" type="text" onfocus="this.placeholder=''" onblur="resetInput(this.value)"></input>
-          </div>
-
-          <div id="bgline">
-            <div id="bgCir1" class="bgLineCircle"></div>
-            <div id="bgCir2" class="bgLineCircle"></div>
-            <div id="bgCir3" class="bgLineCircle"></div>
-          </div>
-
-          <!-- Fee breakdown section -->
-          <div id="feeText">
-            <p id="feeButton">Show fee breakdown</p>
-
-            <div id="newCalcGrid">
-              <p id="fee"></p>
-              <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
-                <option value="0.003">Low cost transfer</option>
-                </select> fee</p>
-
-              <p id="convert" class="feeDetails"></p>
-              <p class="feeDetails">Amount we'll convert</p>
-
-              <p id="exRate"></p>
-              <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
             </div>
-          </div>
 
-          <div id="receiveValue" class="cashBox">
-            <select id="recCurr" name="recCurr" class="currButton">
+            <div id="bgline">
+              <div id="bgCir1" class="bgLineCircle"></div>
+              <div id="bgCir2" class="bgLineCircle"></div>
+              <div id="bgCir3" class="bgLineCircle"></div>
+            </div>
+
+            <!-- Fee breakdown section -->
+            <div id="feeText">
+              <p id="feeButton">Show fee breakdown</p>
+
+              <div id="newCalcGrid">
+                <p id="fee"></p>
+                <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
+<option value="0.003">Low cost transfer</option>
+</select> fee</p>
+
+                <p id="convert" class="feeDetails"></p>
+                <p class="feeDetails">Amount we'll convert</p>
+
+                <p id="exRate"></p>
+                <p><a href="#">Guaranteed rate</a> (80 hrs)</p>
+              </div>
+            </div>
+
+            <div id="receiveValue" class="cashBox">
+              <select id="recCurr" name="recCurr" class="currButton">
               <option name="recCurr" value="EUR">🇪🇺 EUR</option>
               <option name="recCurr" value="GBP" selected>🇬🇧 GBP</option>
               <option name="recCurr" value="USD">🇺🇸 USD</option>
-              <option name="recCurr" value="INR">🇮🇳 INR</option>
             </select>
 
-            <p id="receiveText">Recipient gets</p>
-            <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
-
+              <p id="receiveText">Recipient gets</p>
+              <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
+          
           <div id="insuffFunds">
             <p id="insuffFundsText"></p>
           </div>
         </div>
+        
 
+            <div id="savings">
+              <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
+            </div>
 
-        <div id="savings">
-          <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
+            <div id="doubleButtons">
+              <button id="compareButton">Compare price</button>
+              <button id="getStartedButton">Get started</button>
+            </div>
+
+            <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
+          </div>
         </div>
 
-        <div id="doubleButtons">
-          <button id="compareButton">Compare price</button>
-          <button id="getStartedButton">Get started</button>
-        </div>
-
-        <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
-        </div>
-      </div>
-
-    </section>
-  </main>
-</div>
+      </section>
+    </main>
+  </div>
 
 </body>

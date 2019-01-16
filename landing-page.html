@@ -13,24 +13,24 @@
 <body>
   <!-- Background (holds nav & hero page) -->
   <div id="bg">
-    <span id="bgsquare"></span>
-    <span id="bgcircle"></span>
+    <span id="bg-square"></span>
+    <span id="bg-circle"></span>
 
     <!-- Navigation bar -->
     <nav id="navbar">
-      <div id="mobileMenuIcon" class="mobMenTog">
-        <div id="mobMenClose">✕</div>
+      <div id="mobile-menu-button" class="mobile-menu-toggle">
+        <div id="mobile-menu-close">✕</div>
       </div>
-      <a href="#">
-        <div id="logoBox"></div>
+      <a href="#" tabindex="1">
+        <div id="transferwise-logo"></div>
       </a>
 
-      <a href="#" id="signupLink">Sign up</a>
+      <a href="#" id="signup-link" tabindex="8">Sign up</a>
 
-      <ul id="navLinks">
-        <li class="dropLink">
-          <span class="menuIcons">̥↗</span>Send money ▼
-          <div class="dropLinkContent">
+      <ul id="navbar-links">
+        <li class="drop-down-link" tabindex="2">
+          <span class="mobile-menu-icons">̥↗</span>Send money ▼
+          <div class="drop-link-content">
             <a href="#">Send money</a>
             <a href="#">Get the real exchange rate</a>
             <a href="#">See our coverage</a>
@@ -38,9 +38,9 @@
           </div>
         </li>
 
-        <li class="dropLink">
-          <span class="menuIcons">̥↙</span>Receive money ▼
-          <div class="dropLinkContent">
+        <li class="drop-down-link" tabindex="3">
+          <span class="mobile-menu-icons">̥↙</span>Receive money ▼
+          <div class="drop-link-content">
             <a href="#">Get a borderless account</a>
             <a href="#">Get international bank details</a>
             <a href="#">See how it works</a>
@@ -48,9 +48,9 @@
           </div>
         </li>
 
-        <li class="dropLink">
-          <span class="menuIcons">⇄</span>Debit card ▼
-          <div class="dropLinkContent">
+        <li class="drop-down-link" tabindex="4">
+          <span class="mobile-menu-icons">⇄</span>Debit card ▼
+          <div class="drop-link-content">
             <a href="#">Get a borderless account</a>
             <a href="#">Get a TransferWise Mastercard®</a>
             <a href="#">Compare TransferWise to banks</a>
@@ -59,9 +59,9 @@
           </div>
         </li>
 
-        <li class="dropLink">
-          <span class="menuIcons">∷</span>Business ▼
-          <div class="dropLinkContent">
+        <li class="drop-down-link" tabindex="5">
+          <span class="mobile-menu-icons">∷</span>Business ▼
+          <div class="drop-link-content">
             <a href="#">TransferWise for business</a>
             <a href="#">Freelancers</a>
             <a href="#">E-commerce</a>
@@ -70,9 +70,9 @@
           </div>
         </li>
 
-        <li class="dropLink">
-          <span class="menuIcons">︖</span>About ▼
-          <div class="dropLinkContent">
+        <li class="drop-down-link" tabindex="6">
+          <span class="mobile-menu-icons">︖</span>About ▼
+          <div class="drop-link-content">
             <a href="#">Help</a>
             <a href="#">Pricing</a>
             <a href="#">Mid-market rate</a>
@@ -80,138 +80,137 @@
           </div>
         </li>
 
-        <a href="#">
-          <li id="logInLink">
-            <span class="menuIcons">⇨</span>Log in</li>
+        <a href="#" tabindex="7">
+          <li id="login-link">
+            <span class="mobile-menu-icons">⇨</span>Log in</li>
         </a>
       </ul>
 
-      <div id="overlay" class="mobMenTog"></div>
+      <div id="mobile-menu-overlay" class="mobile-menu-toggle"></div>
     </nav>
 
     <!-- Main hero page content -->
     <main>
-      <section id="heroPage">
+      <section id="landing-page">
         <!-- Left side of hero page -->
-        <div id="leftBox">
+        <div id="information-container">
           <header autofocus>
             <h1>Bye bye bank fees, hello world</h1>
           </header>
 
-          <span id="introDetails"><p>You could <a href="#" target="_blank">save up to 8x</a> compared to a bank when you send money, get paid in other currencies, or spend abroad on the TransferWise debit Mastercard.</p></span>
+          <span id="service-description"><p>You could <a href="#" target="_blank" tabindex="9">save up to 8x</a> compared to a bank when you send money, get paid in other currencies, or spend abroad on the TransferWise debit Mastercard.</p></span>
 
-          <button class="howItWorks" id="HIWlaptopButton">⯈ How it works</button>
+          <button class="how-it-works-button" id="how-it-works-laptop-button" tabindex="10">⯈ How it works</button>
 
-          <div id="accBox">
-            <figure id="tuvacc" class="accreditation">
+          <div id="accreditation-container">
+            <figure id="tuev-figure" class="accreditation">
               <img src="https://transferwise.com/static/images/index/logos/tuv_sud.png" alt="TÜV standards icon">
               <figcaption>TÜV & FCA approved<br>
-                <a href="#">The report</a></figcaption>
+                <a href="#" tabindex="11">The report</a></figcaption>
             </figure>
 
-            <figure id="custacc" class="accreditation">
+            <figure id="customer-figure" class="accreditation">
               <img src="https://daw291njkc3ao.cloudfront.net/conversion/landing-illustrations/customers.svg" alt="Happy customer icon">
               <figcaption>Over 4 million customers<br>
-                <a href="#">Hear from them</a></figcaption>
+                <a href="#" tabindex="12">Hear from them</a></figcaption>
             </figure>
           </div>
         </div>
 
         <!-- Right side of hero page -->
-        <div id="rightBox">
-          <div id="tabs">
-            <span id="sendTab" class="tab selectedTab">
-              <p class="tabIcon">̥↗</p>
-              <p class="tabText">Send money</p>
+        <div id="floating-calculator">
+          <div id="money-tab-container">
+            <span id="send-money-tab" class="money-tab selected-tab" tabindex="13">
+              <p class="tab-icon">̥↗</p>
+              <p class="tab-text">Send money</p>
             </span>
-            <span id="receiveTab" class="tab">
-              <p class="tabIcon">̥↙</p>
-              <p class="tabText">Receive money</p>
+            <span id="receive-money-tab" class="money-tab" tabindex="14">
+              <p class="tab-icon">̥↙</p>
+              <p class="tab-text">Receive money</p>
             </span>
-            <span id="debitTab" class="tab">
-              <p class="tabIcon">⇄</p>
-              <p class="tabText">Debit card</p>
+            <span id="debit-card-tab" class="money-tab" tabindex="15">
+              <p class="tab-icon">⇄</p>
+              <p class="tab-text">Debit card</p>
             </span>
           </div>
 
           <!-- Rightbox calculator-->
-          <div id="sendTabContent" class="tabContents">
+          <div id="send-money-tab-content" class="tab-contents">
 
-            <div id="sendValue" class="cashBox">
-              <select id="inCurr" name="inCurr" class="currButton">
-                <option name="inCurr" value="EUR" selected>🇪🇺 EUR</option>
-                <option name="inCurr" value="GBP">🇬🇧 GBP</option>
-                <option name="inCurr" value="USD">🇺🇸 USD</option>
-                <option name="inCurr" value="INR">🇮🇳 INR</option>
+            <div id="send-money-input-box" class="cash-value-box">
+              <select id="input-currency-select" name="input-currency-select" class="currency-select" tabindex="17">
+                <option name="input-currency-select" value="EUR" selected>🇪🇺 EUR</option>
+                <option name="input-currency-select" value="GBP">🇬🇧 GBP</option>
+                <option name="input-currency-select" value="USD">🇺🇸 USD</option>
+                <option name="input-currency-select" value="INR">🇮🇳 INR</option>
               </select>
 
               <p>You send</p>
-              <input id="inputValue" oninput="calc(this.value)" type="text" onfocus="this.placeholder=''" onblur="resetInput(this.value)"></input>
+              <input id="input-value" oninput="renderNewValues(this.value)" type="text" onfocus="this.placeholder=''" onblur="resetInput(this.value)" tabindex="16"></input>
             </div>
 
-            <div id="bgline">
-              <div id="bgCir1" class="bgLineCircle"></div>
-              <div id="bgCir2" class="bgLineCircle"></div>
-              <div id="bgCir3" class="bgLineCircle"></div>
+            <div id="fee-bullet-point-line">
+              <div id="fee-bullet-point-1" class="fee-bullet-point-circle"></div>
+              <div id="fee-bullet-point-2" class="fee-bullet-point-circle"></div>
+              <div id="fee-bullet-point-3" class="fee-bullet-point-circle"></div>
             </div>
 
-            <!-- Fee breakdown section -->
-            <div id="feeText">
-              <p id="feeButton">Show fee breakdown</p>
+            <div id="fee-breakdown-section">
+              <p id="show-fee-button" tabindex="18">Show fee breakdown</p>
 
-              <div id="newCalcGrid">
-                <p id="fee"></p>
-                <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
-                <option value="0.003">Low cost transfer</option>
+              <div id="fee-breakdown-grid">
+                <p id="fee-value"></p>
+                <p><select id="transfer-speed" tabindex="19"><option value="fast-easy-transfer">Fast and easy transfer</option>
+                <option value="low-cost-transfer">Low cost transfer</option>
                 </select> fee</p>
 
-                <p id="convert" class="feeDetails"></p>
-                <p class="feeDetails">Amount we'll convert</p>
+                <p id="amount-to-convert" class="fee-details"></p>
+                <p class="fee-details">Amount we'll convert</p>
 
-                <p id="exRate"></p>
-                <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
+                <p id="exchange-rate"></p>
+                <p><a id="guaranteed-rate" href="#" tabindex="20">Guaranteed rate</a> (80 hrs)</p>
               </div>
             </div>
 
-            <div id="receiveValue" class="cashBox">
-              <select id="recCurr" name="recCurr" class="currButton">
-              <option name="recCurr" value="EUR">🇪🇺 EUR</option>
-              <option name="recCurr" value="GBP" selected>🇬🇧 GBP</option>
-              <option name="recCurr" value="USD">🇺🇸 USD</option>
-              <option name="recCurr" value="INR">🇮🇳 INR</option>
+            <div id="receive-money-output-box" class="cash-value-box">
+              <select id="output-currency-select" name="output-currency-select" class="currency-select" tabindex="22">
+              <option name="output-currency-select" value="EUR">🇪🇺 EUR</option>
+              <option name="output-currency-select" value="GBP" selected>🇬🇧 GBP</option>
+              <option name="output-currency-select" value="USD">🇺🇸 USD</option>
+              <option name="output-currency-select" value="INR">🇮🇳 INR</option>
             </select>
 
-              <p id="receiveText">Recipient gets</p>
-              <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
+              <p id="receive-text">Recipient gets</p>
+              <input id="output-value" type="text" onfocus="this.placeholder=''" tabindex="21"></input>
 
-              <div id="insuffFunds">
-                <p id="insuffFundsText"></p>
+              <div id="insufficient-amount-error">
+                <p id="insufficient-amount-error-text"></p>
               </div>
             </div>
 
-            <div id="savings">
-              <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
+            <div id="savings-container">
+              <p>You could save up to: <b id="total-savings"></b><br>Should arrive <b id="arrival-time">in seconds!</b></p>
             </div>
 
-            <div id="doubleButtons">
-              <button id="compareButton">Compare price</button>
-              <button id="getStartedButton">Get started</button>
+            <div id="compare-get-started-container">
+              <button id="compare-button" tabindex="23">Compare price</button>
+              <button id="get-started-button" tabindex="24">Get started</button>
             </div>
 
           </div>
-          <div id="receiveTabContent" class="tabContents">
+          <div id="receive-money-tab-content" class="tab-contents">
             <div>
               <p>Hello world!</p>
             </div>
           </div>
-          <div id="debitTabContent" class="tabContents">
+          <div id="debit-card-tab-content" class="tab-contents">
             <div>
               <p>This <em>is</em> only a demo, you know...</p>
             </div>
           </div>
         </div>
 
-        <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
+        <button id="how-it-works-mobile-button" class="how-it-works-button">⯈ How it works</button>
 
       </section>
     </main>

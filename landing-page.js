@@ -1,15 +1,14 @@
 // Variable declaration
 let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 let detVis = false;
+let mobMenVis = false;
 let inputValue = "1000";
-
 let exRate = {
   EUR: 1,
   GBP: 0.90032,
   USD: 1.14541,
   INR: 80.3551
 };
-
 
 // Page load variable declaration and event handlers
 window.onload = function() {
@@ -69,14 +68,66 @@ window.onload = function() {
       }
       document.getElementById(this.id + "Content").style.display = "block";
       this.classList.add("selectedTab");
-      console.log(this.id);
     });
   }
   
-  // Open mobile menu
-  document.getElementById("mobileMenuIcon").addEventListener("click", function(){
-    console.log("mobile menu icon was clicked");
+  // Open/close mobile menu
+  let mobMenTogs = document.getElementsByClassName("mobMenTog");
+  for (let i = 0; i < mobMenTogs.length; i++) {
+    mobMenTogs[i].addEventListener("click", function(){
+      if (mobMenVis == false){
+        mobMenVis = true;
+        document.getElementById("navLinks").style.display = "inline-block";
+        document.getElementById("heroPage").style.opacity = "0.4";
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("overlay").style.opacity = "0.5";
+        document.getElementById("mobMenClose").style.display = "block";
+
+      } else {
+        mobMenVis = false;
+        document.getElementById("navLinks").style.display = "none";
+        document.getElementById("heroPage").style.opacity = "1";
+        document.getElementById("overlay").style.display = "none";
+        document.getElementById("overlay").style.opacity = "0";
+        document.getElementById("mobMenClose").style.display = "none";
+        
+        // This loop hides all drop link contents after exiting the mobile menu, but they then can't be used
+        for (let i = 0; i < document.getElementsByClassName("dropLink").length; i++) {
+          document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
+        }
+      }
+    });
+  }
+  
+  // Open mobile dropLink content on click
+  let dropLinks = document.getElementsByClassName("dropLink");
+  for (let i = 0; i < dropLinks.length; i++) {
+    dropLinks[i].addEventListener("click", function() {
+      for (let i = 0; i < dropLinks.length; i++) {
+        document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
+        dropLinks[i].style.color = "var(--bgcol)";
+      }
+      this.getElementsByClassName("dropLinkContent")[0].style.display = "block";
+      this.style.color = "var(--logocol)";
+    });
+  }
+  
+  // Reset navbar after window resizes
+  window.addEventListener("resize", function() {
+    let whiteLinks = document.getElementsByTagName("li");
+    if (window.innerWidth > 710) {
+      document.getElementById("navLinks").style.display = "inline-block";
+      for (let i = 0; i < whiteLinks.length; i++) {
+        whiteLinks[i].style.color = "white";
+      }
+    } else {
+      document.getElementById("navLinks").style.display = "none";
+      for (let i = 0; i < whiteLinks.length; i++) {
+        whiteLinks[i].style.color = "var(--bgcol)";
+      }
+    }
   });
+
 };
 
 // Determine the exchange rate
@@ -98,7 +149,7 @@ function calc(val) {
   ).toFixed(2);
   
   // Prevent NaN result (no calc on invalid input)
-  if (val.match(/(?=\D)(?!\.)/) || val.match(/\..{3}/)) {
+  if (val.match(/(?=\D)(?!\.)/) || val.match(/\.(.{3}|.*\.)/)) {
     document.getElementById("outputValue").value = "0.00";
     return;
   }
@@ -112,9 +163,8 @@ function calc(val) {
     document.getElementById("recCurr").style.borderRadius = "0 3px 0 0";
     document.getElementById("insuffFundsText").innerHTML =
       "Please enter an amount more than 0.01 " + recCurr;
-
   } else {
-    // Error reset to initial
+    // Reset "minimum value" error styling to initial
     document.getElementById("insuffFunds").style.display = "none";
     document.getElementById("receiveValue").classList.remove("cashBoxError");
     document.getElementById("receiveText").style.color = "var(--shapecol)";
@@ -131,7 +181,7 @@ function calc(val) {
   }
 }
 
-// Set input to default (1,000) when blank
+// Set input to default (1,000) when left blank
 function resetInput(val) {
   document.getElementById("inputValue").placeholder = "1,000";
   val == "" ? (inputValue = "1000") : (inputValue = val);

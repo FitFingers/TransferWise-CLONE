@@ -1,4 +1,8 @@
 <head>
+  <title>Transfer Money Online | Send Money Abroad with TransferWise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="description" content="Banks charge a lot for overseas transfers. We dont. Transfer money abroad easily and quickly with our low cost money transfers.">
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
   <link href="styles/landing-page.css" rel="stylesheet" type="text/css">
   <script src="scripts/landing-page.js" type="text/javascript"></script>
@@ -12,13 +16,18 @@
 
     <!-- Navigation bar -->
     <nav id="navbar">
-      <div id="mobileMenuIcon"></div>      
+      <div id="mobileMenuIcon" class="mobMenTog">
+        <div id="mobMenClose">✕</div>
+      </div>
       <a href="#">
         <div id="logoBox"></div>
       </a>
 
+      <a href="#" id="signupLink">Sign up</a>
+
       <ul id="navLinks">
-        <li class="dropLink">Send money
+        <li class="dropLink">
+          <span class="menuIcons">̥↗</span>Send money ▼
           <div class="dropLinkContent">
             <a href="#">Send money</a>
             <a href="#">Get the real exchange rate</a>
@@ -27,7 +36,8 @@
           </div>
         </li>
 
-        <li class="dropLink">Receive money
+        <li class="dropLink">
+          <span class="menuIcons">̥↙</span>Receive money ▼
           <div class="dropLinkContent">
             <a href="#">Get a borderless account</a>
             <a href="#">Get international bank details</a>
@@ -36,7 +46,8 @@
           </div>
         </li>
 
-        <li class="dropLink">Debit card
+        <li class="dropLink">
+          <span class="menuIcons">⇄</span>Debit card ▼
           <div class="dropLinkContent">
             <a href="#">Get a borderless account</a>
             <a href="#">Get a TransferWise Mastercard®</a>
@@ -46,7 +57,8 @@
           </div>
         </li>
 
-        <li class="dropLink">Business
+        <li class="dropLink">
+          <span class="menuIcons">∷</span>Business ▼
           <div class="dropLinkContent">
             <a href="#">TransferWise for business</a>
             <a href="#">Freelancers</a>
@@ -56,7 +68,8 @@
           </div>
         </li>
 
-        <li class="dropLink">About
+        <li class="dropLink">
+          <span class="menuIcons">︖</span>About ▼
           <div class="dropLinkContent">
             <a href="#">Help</a>
             <a href="#">Pricing</a>
@@ -66,13 +79,12 @@
         </li>
 
         <a href="#">
-          <li id="logInLink">Log in</li>
-        </a>
-
-        <a href="#">
-          <li id="signupLink">Sign up</li>
+          <li id="logInLink">
+            <span class="menuIcons">⇨</span>Log in</li>
         </a>
       </ul>
+
+      <div id="overlay" class="mobMenTog"></div>
     </nav>
 
     <!-- Main hero page content -->
@@ -128,6 +140,7 @@
                 <option name="inCurr" value="EUR" selected>🇪🇺 EUR</option>
                 <option name="inCurr" value="GBP">🇬🇧 GBP</option>
                 <option name="inCurr" value="USD">🇺🇸 USD</option>
+                <option name="inCurr" value="INR">🇮🇳 INR</option>
               </select>
 
               <p>You send</p>
@@ -147,7 +160,6 @@
               <div id="newCalcGrid">
                 <p id="fee"></p>
                 <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
-
                 <option value="0.003">Low cost transfer</option>
                 </select> fee</p>
 
@@ -155,9 +167,7 @@
                 <p class="feeDetails">Amount we'll convert</p>
 
                 <p id="exRate"></p>
-
                 <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
-
               </div>
             </div>
 
@@ -166,6 +176,7 @@
               <option name="recCurr" value="EUR">🇪🇺 EUR</option>
               <option name="recCurr" value="GBP" selected>🇬🇧 GBP</option>
               <option name="recCurr" value="USD">🇺🇸 USD</option>
+              <option name="recCurr" value="INR">🇮🇳 INR</option>
             </select>
 
               <p id="receiveText">Recipient gets</p>
@@ -186,10 +197,18 @@
             </div>
 
           </div>
-          <div id="receiveTabContent" class="tabContents"><div><p>Hello world!</p></div></div>
-          <div id="debitTabContent" class="tabContents"><div><p>This <em>is</em> only a demo, you know...</p></div></div>
+          <div id="receiveTabContent" class="tabContents">
+            <div>
+              <p>Hello world!</p>
+            </div>
+          </div>
+          <div id="debitTabContent" class="tabContents">
+            <div>
+              <p>This <em>is</em> only a demo, you know...</p>
+            </div>
+          </div>
         </div>
-    
+
         <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
 
       </section>

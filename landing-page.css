@@ -1,7 +1,7 @@
 html,
 body {
   overflow-x: hidden;
-  min-width: 312px;
+  min-width: 318px;
 }
 
 * {
@@ -88,6 +88,7 @@ body {
   margin: 6px -36px 0 -3.5%;
   height: 32px;
   width: 32px;
+  cursor: pointer;
 }
 
 #logoBox {
@@ -278,7 +279,6 @@ h1::after {
     1px 3px 30px 0 rgb(55, 81, 126, 0.7);
 }
 
-/* Tab section uses JavaScript so I've hard-coded a selected tab instead until I've learnt how HTML, CSS and JS interact*/
 #tabs {
   background: #253655;
   display: flex;
@@ -289,6 +289,7 @@ h1::after {
   background: linear-gradient(35deg, #25375f, #2c4060);
   padding: 20px 0;
   line-height: 27px;
+  cursor: pointer;
   text-align: center;
   text-decoration: none;
   flex: 1;
@@ -309,15 +310,29 @@ h1::after {
   color: var(--logocol);
 }
 
-#sendTab,
-#sendTab p {
+.selectedTab, .selectedTab:hover, .selectedTab p {
   background: var(--bgcol);
   color: white;
 }
 
-#calculator {
+.tabContents {
   position: relative;
+  display: block;
   margin: 34px;
+}
+
+#sendTabContent {
+  
+}
+
+#receiveTabContent {
+  display: none;
+  height: 340px;
+}
+
+#debitTabContent {
+  display: none;
+  height: 360px;
 }
 
 .cashBox {
@@ -330,6 +345,10 @@ h1::after {
 
 .cashBox:hover {
   box-shadow: 0 0 1px 1px var(--logocol);
+}
+
+.cashBoxError {
+  box-shadow: 0 0 0px 1.5px #C73B3B;
 }
 
 .cashBox p {
@@ -429,7 +448,7 @@ h1::after {
 
 #newCalcGrid {
   display: grid;
-  grid-template-columns: 110px auto;
+  grid-template-columns: max-content auto;
   grid-template-rows: 30px 0px 30px;
   margin-left: 30px;
 }
@@ -470,6 +489,10 @@ h1::after {
   text-decoration: none;
   border-bottom: 1px dotted var(--logocol);
   color: #d3d5d8;
+}
+
+#convert {
+  margin-right: 5px;
 }
 
 #savings p {
@@ -564,16 +587,13 @@ h1::after {
 @media only screen and (max-width: 710px) {
   #logoBox {
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TransferWise_logo.svg/2000px-TransferWise_logo.svg.png);
+    margin-left: 32px;
     height: 20px;
     width: 112px;
   }
 
   #mobileMenuIcon {
     display: inline-block;
-  }
-
-  #logoBox {
-    margin-left: 32px;
   }
 
   .dropLink,
@@ -591,9 +611,12 @@ h1::after {
     margin-bottom: 38px;
   }
 
-  p,
-  #newCalcGrid {
+  p, #newCalcGrid {
     font-size: 13px;
+  }
+  
+  .tabIcon {
+    font-size: 16px;
   }
 
   #newCalcGrid select {
@@ -633,7 +656,11 @@ h1::after {
     padding: 0 3%;
   }
 
-  #calculator {
+  .tabContents {
     margin: 34px 8px;
+  }
+  
+  .tabText {
+    font-size: 13px;
   }
 }

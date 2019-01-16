@@ -9,6 +9,7 @@ body {
   margin: 0;
   font-family: Lato;
   letter-spacing: 0.06em;
+  text-decoration: none;
   color: white;
 }
 
@@ -76,7 +77,7 @@ body {
   width: 90%;
   max-width: 1100px;
   margin: 0 auto;
-  z-index: 2;
+  z-index: 3;
 }
 
 #mobileMenuIcon {
@@ -101,10 +102,16 @@ body {
   width: 112px;
 }
 
+.menuIcons {
+  display: none;
+}
+
 #navLinks {
+  display: inline-block;
   float: right;
   list-style: none;
   font-size: 13px;
+  z-index: 3;
 }
 
 li {
@@ -115,9 +122,9 @@ li {
 
 .dropLink {
   position: relative;
+  cursor: pointer;
 }
 
-.dropLink:hover,
 #logInLink:hover {
   cursor: pointer;
   color: var(--logocol);
@@ -125,10 +132,6 @@ li {
 
 .dropLink:hover .dropLinkContent {
   display: block;
-}
-
-.dropLink::after {
-  content: " ▼";
 }
 
 .dropLinkContent {
@@ -166,16 +169,29 @@ li {
 
 #signupLink {
   background: #8797b2;
+  position: relative;
+  float: right;
   padding: 6px 12px;
-  margin-right: 0px;
-  margin-left: -4px;
+  margin: 11px 0 0 -4px;
   border-radius: 2px;
+  font-size: 13px;
   font-weight: bold;
 }
 
 #signupLink:hover {
   background: var(--darkblue);
   color: var(--logocol);
+}
+
+#overlay {
+  background: black;
+  display: none;
+  position: fixed;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0;
+  cursor: pointer;
 }
 
 /* Main content: Hero page */
@@ -510,6 +526,7 @@ h1::after {
 #getStartedButton {
   flex: 1;
   padding: 13px;
+  min-height: 40px;
   cursor: pointer;
   border: none;
   border-radius: 3px;
@@ -595,10 +612,62 @@ h1::after {
   #mobileMenuIcon {
     display: inline-block;
   }
-
-  .dropLink,
-  #logInLink {
+  
+  #mobMenClose {
+    position: absolute;
     display: none;
+    top: 10px;
+    left: 260px;
+    color: var(--logocol);
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 3;
+  }
+  
+  #mobMenClose:hover {
+    color: #0082ce;
+  }
+  
+  #navLinks {
+    background: white;
+    display: none;
+    position: fixed;
+    float: none;
+    top: 0;
+    left: 0;
+    padding: 6px;
+    height: 100vh;
+    width: 276px;
+  }
+  
+  #navLinks li {
+    display: block;
+    padding: 18px 26px;
+    margin-top: -8px;
+    border-bottom: thin solid var(--linkcol);
+    color: var(--bgcol);
+    font-size: 16px;
+    text-align: left;
+  }
+  
+  .menuIcons {
+    display: inline-block;
+    margin-right: 6px;
+    font-size: 22px;
+    color: var(--bgcol);
+  }
+  
+  .dropLink:hover .dropLinkContent, .dropLinkContent {
+    display: none;
+    position: relative;
+    margin: 8px -20px -16px -20px;
+    box-shadow: none;
+    font-size: 14px;
+  }
+  
+  .dropLinkContent a {
+    padding: 10px 12px;
   }
 
   #signupLink {

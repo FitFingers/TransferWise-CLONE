@@ -1,7 +1,7 @@
 # TransferWise-CLONE
 My attempt at recreating the TransferWise landing page using 100% my own code.
 
-I did not make this design; this design belongs entirely to TransferWise and was designed by Venture Three.
+I did not design this page, color scheme or layout; this design belongs entirely to TransferWise and was designed by Venture Three.
 
 ----------
 

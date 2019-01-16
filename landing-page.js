@@ -1,224 +1,257 @@
-// Variable declaration
-let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-let detVis = false;
-let menVis = false;
-let menuType = "";
-let inputValue = "1000";
-let exRate = {
+// VARIABLE DECLARATION
+const LANDING_PAGE = document.getElementById("landing-page");
+const MOBILE_MENU_TOGGLES = document.getElementsByClassName("mobile-menu-toggle");
+const MOBILE_MENU_OVERLAY = document.getElementById("mobile-menu-overlay");
+const MOBILE_MENU_CLOSE = document.getElementById("mobile-menu-close");
+const NAVBAR_LINKS = document.getElementById("navbar-links");
+const DROP_LINK = document.getElementsByClassName("drop-down-link");
+const DROP_LINK_CONTENT = document.getElementsByClassName("drop-link-content");
+const MAIN_TABS = document.getElementsByClassName("money-tab");
+const TAB_CONTENTS = document.getElementsByClassName("tab-contents");
+const FEE_BREAKDOWN_GRID = document.getElementById("fee-breakdown-grid");
+const FEE_DETAILS = document.getElementsByClassName("fee-details");
+const CURRENCY_BUTTONS = document.getElementsByClassName("currency-select");
+const OUT_CURRENCY = document.getElementById("output-currency-select");
+const OUTPUT_CONT = document.getElementById("receive-money-output-box");
+const OUTPUT_VALUE = document.getElementById("output-value");
+const RECEIVE_TEXT = document.getElementById("receive-text");
+const INSUFF_ERROR = document.getElementById("insufficient-amount-error");
+const INSUFF_TEXT = document.getElementById("insufficient-amount-error-text");
+const ARRIVAL_TIME = document.getElementById("arrival-time");
+
+const BASE_CHARGE = 0.8;
+const MONTH = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+const EXCHANGE_RATES = {
   EUR: 1,
   GBP: 0.90032,
   USD: 1.14541,
   INR: 80.3551
 };
 
-// Page load variable declaration and event handlers
-window.onload = function() {
-  let transferSpeed = document.getElementById("transferSpeed").value;
-  let inCurr = document.getElementById("inCurr").value;
-  let recCurr = document.getElementById("recCurr").value;
-  let mobMenTogs = document.getElementsByClassName("mobMenTog");
-  let dlcTogs = document.getElementsByClassName("dropLink");
-  document.getElementById("inputValue").placeholder = "1,000";
-  calc(inputValue);
-  menuTypeQuery();
+let isFeeDetailVisible = false;
+let isMenuVisible = false;
+let menuType = "";
+let transferSpeed = 0.005;
 
-  // Fee breakdown toggle switch
-  document.getElementById("feeButton").addEventListener("click", function toggleFees() {
-    let details = document.getElementsByClassName("feeDetails");
-    if (detVis == false) {
-      detVis = true;
-      document.getElementById("newCalcGrid").style.gridTemplateRows =
-        "30px 30px 30px";
-      for (let i = 0; i < details.length; i++) {
-        details[i].style.visibility = "visible";
-      }
+
+
+
+// FUNCTIONS
+
+function menuTypeQuery() {
+  menuType = window.innerWidth >= 711 ? "laptop" : "mobile";
+  adjustMenuFormat();
+  setToggleType();
+  closeDropLinks();
+}
+
+function toggleMobileMenu() {
+  isMenuVisible = !isMenuVisible;
+  adjustMenuFormat();
+}
+
+function adjustMenuFormat() {
+  if (menuType === "mobile") {
+    if (isMenuVisible === false) {
+      NAVBAR_LINKS.style.display = "none";
+      LANDING_PAGE.style.opacity = "1";
+      MOBILE_MENU_OVERLAY.style.display = "none";
+      MOBILE_MENU_OVERLAY.style.opacity = "0";
+      MOBILE_MENU_CLOSE.style.display = "none";
     } else {
-      detVis = false;
-      document.getElementById("newCalcGrid").style.gridTemplateRows =
-        "30px 0px 30px";
-      for (let i = 0; i < details.length; i++) {
-        details[i].style.visibility = "hidden";
-      }
+      NAVBAR_LINKS.style.display = "inline-block";
+      LANDING_PAGE.style.opacity = "0.4";
+      MOBILE_MENU_OVERLAY.style.display = "block";
+      MOBILE_MENU_OVERLAY.style.opacity = "0.5";
+      MOBILE_MENU_CLOSE.style.display = "block";
     }
-  });
+  } else {
+    NAVBAR_LINKS.style.display = "inline-block";
+  }
+}
 
-  // Update calculator and details after dropbox change
-  document.getElementById("transferSpeed").addEventListener("change", function() {
-    transferSpeed = this.value;
-    if (this.value == 0.005) {
-      document.getElementById("speedText").innerHTML = "in seconds!";
-    } else {
-      // TO-DO: Must check if date works at end of month/year (potential bug for 30 Jan >> 31 Jan >> 1 Jan >> 2 Feb)
-      document.getElementById("speedText").innerHTML = "by " + (new Date().getDate() + 1) + " " + month[new Date().getMonth()];
-    }
-    calc(inputValue);
-  });
+function openDropLink() {
+  closeDropLinks();
+  this.children.item(1).style.display = "block";
+  if (menuType === "mobile") {
+    this.style.color = "var(--logocol)";
+  }
+}
 
-  // Run calc after changing currency dropbox
-  let currButts = document.getElementsByClassName("currButton");
-  for (let i = 0; i < currButts.length; i++) {
-    currButts[i].addEventListener("change", function() {
-      calc(inputValue);
-    });
-  }
+function closeDropLinks() {
+  [...DROP_LINK_CONTENT].map(content => content.style.display = "none");
+  [...DROP_LINK].map(link => link.style.color =
+                     menuType === "mobile" ? "var(--bgcol)" : "white");
+}
 
-  // Switch between Send, Receive and Debit tabs
-  let tabGroup = document.getElementsByClassName("tab");
-  for (let i = 0; i < tabGroup.length; i++) {
-    tabGroup[i].addEventListener("click", function() {
-      for (let i = 0; i < tabGroup.length; i++) {
-        document.getElementById(tabGroup[i].id + "Content").style.display = "none";
-        document.getElementById(tabGroup[i].id).classList.remove("selectedTab");
-      }
-      document.getElementById(this.id + "Content").style.display = "block";
-      this.classList.add("selectedTab");
-    });
-  }
-    
-  // Determine laptop or mobile menu, style accordingly and add whether dlc opens on hover or click
-  function menuTypeQuery() {
-    window.innerWidth >= 711 ? menuType = "laptop" : menuType = "mobile";
-    menuStyling();
-    hovClick();
-    closeDLC();
-  }
-  
-  // To open and close mobile menu while keeping laptop navbar present
-  function toggleMenu() {
-    if (menuType == "mobile") {
-      menVis == false ? menVis = true : menVis = false;
-    } else if (menuType == "laptop") {
-      menVis = true;
-    }
-    menuStyling();
-  }
-  
-  // Style mobile menu and background fade
-  function menuStyling() {
-    if (menuType == "mobile") {
-      if (menVis == false) {
-        document.getElementById("navLinks").style.display = "none";
-        document.getElementById("heroPage").style.opacity = "1";
-        document.getElementById("overlay").style.display = "none";
-        document.getElementById("overlay").style.opacity = "0";
-        document.getElementById("mobMenClose").style.display = "none";
-      } else {
-        document.getElementById("navLinks").style.display = "inline-block";
-        document.getElementById("heroPage").style.opacity = "0.4";
-        document.getElementById("overlay").style.display = "block";
-        document.getElementById("overlay").style.opacity = "0.5";
-        document.getElementById("mobMenClose").style.display = "block";
-      }
-    } else {
-      document.getElementById("navLinks").style.display = "inline-block";
-    }
-  }
-
-  // Ensure correct navbar menu form (mobile or laptop)
-  window.addEventListener("resize", menuTypeQuery);
-  
-  // Add menu toggle functionality
-  for (let i = 0; i < mobMenTogs.length; i++) {
-    mobMenTogs[i].addEventListener("click", toggleMenu);
-    mobMenTogs[i].addEventListener("click", closeDLC);
-  }
-  
-  // Open individual drop link content
-  function openDLC() {
-    closeDLC();
-    this.getElementsByClassName("dropLinkContent")[0].style.display = "block";
-    if (menuType == "mobile") {
-      this.style.color = "var(--logocol)";
-    }
-  }
-  
-  // Close all drop link content
-  function closeDLC() {
-    for (let i = 0; i < dlcTogs.length; i++) {
-      document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
-      if (menuType == "mobile") {
-      document.getElementsByClassName("dropLink")[i].style.color = "var(--bgcol)";
-      } else {
-      document.getElementsByClassName("dropLink")[i].style.color = "white";
-      }
-    }
-  }
-
-  // Set whether dlc opens on hover or click (laptop or mobile)
-  function hovClick() {
-    if (menuType == "mobile") {
-      for (let i = 0; i < dlcTogs.length; i++) {
-        dlcTogs[i].addEventListener("click", openDLC);
-        dlcTogs[i].removeEventListener("mouseover", openDLC);
-        dlcTogs[i].removeEventListener("mouseout", closeDLC);
-      }
-    } else {
-      for (let i = 0; i < dlcTogs.length; i++) {
-        dlcTogs[i].addEventListener("mouseover", openDLC);
-        dlcTogs[i].addEventListener("mouseout", closeDLC);
-      }   
-    }
-  }
-  
-  // END OF WINDOW.ONLOAD
+function openTab() {
+  [...MAIN_TABS].map(tab => tab.classList.remove("selected-tab"));
+  [...TAB_CONTENTS].map(content => content.style.display = "none");
+  document.getElementById(`${this.id}-content`).style.display = "block";
+  this.classList.add("selected-tab");
 };
 
-
-// Determine the exchange rate
-function exchange(sc, rc) {
-  return rc / sc;
+function calculateFee(val) {
+  return (BASE_CHARGE + (val - BASE_CHARGE) * transferSpeed).toFixed(2);
 }
 
-// Calculate received value
-function calc(val) {
-  // Variables required for function
-  let inCurr = document.getElementById("inCurr").value;
-  let recCurr = document.getElementById("recCurr").value;
-  let inputValue = val;
-  let transferSpeed = document.getElementById("transferSpeed").value;
-  let fee = (0.8 + (inputValue - 0.8) * transferSpeed).toFixed(2);
-  let convertValue = (val - fee).toFixed(2);
-  let outputValue = (convertValue * exchange(exRate[inCurr], exRate[recCurr])).toFixed(2);
+function calculateConvertValue(val) {
+  return (val - calculateFee(val)).toFixed(2);
+}
+
+function getSendCurrency() {
+  return document.getElementById("input-currency-select").value; 
+}
+
+function getReceiveCurrency() {
+  return document.getElementById("output-currency-select").value;
+}
+
+function getExchangeRate() {
+  return (EXCHANGE_RATES[getReceiveCurrency()]/EXCHANGE_RATES[getSendCurrency()]).toFixed(5);
+}
+
+function calculateReceiveValue(val) {
+  return (calculateConvertValue(val) * getExchangeRate()).toFixed(2);
+}
+
+// Random savings of 4.7% for demo
+function calculateSavings(val) {
+  return (calculateConvertValue(val) * 0.047).toFixed(2);
+}
+
+// Update the DOM with newly-calculated values
+function renderNewValues(input) {
+  if (isThereAnError(input) || isInputInvalid(input)) { return };
+    
+  document.getElementById("fee-value").innerHTML =
+    `-${calculateFee(input)} ${getSendCurrency()}`;
   
-  // Prevent NaN result (no calc on invalid input)
-  if (val.match(/(?=\D)(?!\.)/) || val.match(/\.(.{3}|.*\.)/)) {
-    document.getElementById("outputValue").value = "0.00";
-    return;
-  }
-  // Throw "minimum value required" error
+  document.getElementById("amount-to-convert").innerHTML =
+    `${calculateConvertValue(input)} ${getSendCurrency()}`;
+  
+  document.getElementById("exchange-rate").innerHTML =
+    getExchangeRate();
+  
+  document.getElementById("total-savings").innerHTML =
+    `${calculateSavings(input)} ${getSendCurrency()}`;
+  
+  OUTPUT_VALUE.value = calculateReceiveValue(input);
+}
+
+function isThereAnError(val) {
   if (val <= 0.8) {
-    document.getElementById("outputValue").value = "0.00";
-    document.getElementById("insuffFunds").style.display = "block";
-    document.getElementById("receiveValue").classList.add("cashBoxError");
-    document.getElementById("receiveText").style.color = "#C73B3B";
-    document.getElementById("recCurr").style.height = "70%";
-    document.getElementById("recCurr").style.borderRadius = "0 3px 0 0";
-    document.getElementById("insuffFundsText").innerHTML =
-      "Please enter an amount more than 0.01 " + recCurr;
+    OUTPUT_VALUE.value = "0.00";
+    INSUFF_ERROR.style.display = "block";
+    INSUFF_TEXT.innerHTML = `Please enter an amount more than 0.01 ${getReceiveCurrency()}`;
+    OUTPUT_CONT.classList.add("cash-value-box-error");
+    OUT_CURRENCY.style.height = "70%";
+    OUT_CURRENCY.style.borderRadius = "0 3px 0 0";
+    RECEIVE_TEXT.style.color = "#C73B3B";
+    return true;
   } else {
-    // Reset "minimum value" error styling to initial
-    document.getElementById("insuffFunds").style.display = "none";
-    document.getElementById("receiveValue").classList.remove("cashBoxError");
-    document.getElementById("receiveText").style.color = "var(--shapecol)";
-    document.getElementById("recCurr").style.height = "initial";
-    document.getElementById("recCurr").style.borderRadius = "0 3px 3px 0";
-
-    // Actual calculations for received value
-    document.getElementById("fee").innerHTML = "-" + fee + " " + inCurr;
-    document.getElementById("convert").innerHTML = convertValue + " " + inCurr;
-    document.getElementById("exRate").innerHTML = exchange(exRate[inCurr],exRate[recCurr]).toFixed(5);
-    document.getElementById("outputValue").value = outputValue;
-    document.getElementById("saveValue").innerHTML =
-      (convertValue * 0.047).toFixed(2) + " " + inCurr;
+    INSUFF_ERROR.style.display = "none";
+    RECEIVE_TEXT.style.color = "var(--shapecol)";
+    OUTPUT_CONT.classList.remove("cash-value-box-error");
+    OUT_CURRENCY.style.height = "initial";
+    OUT_CURRENCY.style.borderRadius = "0 3px 3px 0";
+    return false;
   }
 }
 
-// Set input to default (1,000) when left blank
-function resetInput(val) {
-  document.getElementById("inputValue").placeholder = "1,000";
-  val == "" ? (inputValue = "1000") : (inputValue = val);
-  calc(inputValue);
+function isInputInvalid(input) {
+  if (input.match(/(?=\D)(?!\.)/) || input.match(/\.(.{3}|.*\.)/)) {
+    document.getElementById("output-value").value = "0.00";
+    return true;
+  }
 }
 
+function resetInput(val) {
+  document.getElementById("input-value").placeholder = "1,000";
+  getInput();
+}
+
+function getInput() {
+  const INPUT_VALUE = document.getElementById("input-value").value || "1000";
+  renderNewValues(INPUT_VALUE);
+}
+
+function toggleFeeBreakdown() {
+  isFeeDetailVisible = !isFeeDetailVisible;
+  showFees();
+}
+
+function showFees() {
+  if (isFeeDetailVisible === true) {
+    FEE_BREAKDOWN_GRID.style.gridTemplateRows = "30px 30px 30px";
+    [...FEE_DETAILS].map(cell => cell.style.visibility = "visible");
+  } else {
+    FEE_BREAKDOWN_GRID.style.gridTemplateRows = "30px 0px 30px";
+    [...FEE_DETAILS].map(cell => cell.style.visibility = "hidden");
+  }
+}
+
+function setArrivalTime() {
+  if (this.value === "fast-easy-transfer") {
+    transferSpeed = 0.005;
+    ARRIVAL_TIME.innerHTML = "in seconds!";
+  } else {
+    transferSpeed = 0.003;
+    ARRIVAL_TIME.innerHTML = `by ${(new Date().getDate() + 1)} ${MONTH[new Date().getMonth()]}`;
+    // TO-DO: Must check if date works at end of month/year (potential bug for 30 Jan >> 31 Jan >> 1 Jan >> 2 Feb)
+  }
+  renderNewValues();
+}
+
+// EVENT LISTENERS OR FUNCTIONS? Hmm...
+// Determine the correct event and assign event listener to drop links
+function setToggleType() {
+  [...DROP_LINK].map(droplink => determineToggleType(droplink));
+}
+
+// Determine whether drop links open on click(mobile) or hover(laptop)
+function determineToggleType(droplink) {
+  if (menuType === "mobile") {
+    droplink.addEventListener("click", openDropLink);
+    droplink.removeEventListener("mouseover", openDropLink);
+    droplink.removeEventListener("mouseout", closeDropLinks);
+  } else {
+    droplink.addEventListener("mouseover", openDropLink);
+    droplink.addEventListener("mouseout", closeDropLinks);
+  }
+}
+
+
+
+
+// EVENT LISTENERS
+
+window.addEventListener("resize", menuTypeQuery);
+
+[...CURRENCY_BUTTONS].map(button => button.addEventListener("change", getInput));
+
+document.getElementById("transfer-speed").addEventListener("change", setArrivalTime);
+
+document.getElementById("show-fee-button").addEventListener("click", toggleFeeBreakdown);
+
+[...MAIN_TABS].map(tab => tab.addEventListener("click", openTab));
+
+[...MOBILE_MENU_TOGGLES].map(function(toggle) {
+  toggle.addEventListener("click", toggleMobileMenu);
+  toggle.addEventListener("click", closeDropLinks);
+});
+
+
+
+
+// WINDOW.ONLOAD/PAGE SETUP
+window.onload = function() {
+  resetInput();
+  menuTypeQuery();
+}
 
 // NEXT FEATURE: Reverse calculation, so user input's receive value and is told how much to send
+
+// NEXT FEATURE: No outline on click, outline only on lastkey=tab
+
+// NEXT FEATURE: Check on date setup (does date rollover months correctly?)

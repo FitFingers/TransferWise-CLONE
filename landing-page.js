@@ -1,7 +1,8 @@
 // Variable declaration
 let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 let detVis = false;
-let mobMenVis = false;
+let menVis = false;
+let menuType = "";
 let inputValue = "1000";
 let exRate = {
   EUR: 1,
@@ -15,8 +16,11 @@ window.onload = function() {
   let transferSpeed = document.getElementById("transferSpeed").value;
   let inCurr = document.getElementById("inCurr").value;
   let recCurr = document.getElementById("recCurr").value;
+  let mobMenTogs = document.getElementsByClassName("mobMenTog");
+  let dlcTogs = document.getElementsByClassName("dropLink");
   document.getElementById("inputValue").placeholder = "1,000";
   calc(inputValue);
+  menuTypeQuery();
 
   // Fee breakdown toggle switch
   document.getElementById("feeButton").addEventListener("click", function toggleFees() {
@@ -70,65 +74,95 @@ window.onload = function() {
       this.classList.add("selectedTab");
     });
   }
+    
+  // Determine laptop or mobile menu, style accordingly and add whether dlc opens on hover or click
+  function menuTypeQuery() {
+    window.innerWidth >= 711 ? menuType = "laptop" : menuType = "mobile";
+    menuStyling();
+    hovClick();
+    closeDLC();
+  }
   
-  // Open/close mobile menu
-  let mobMenTogs = document.getElementsByClassName("mobMenTog");
-  for (let i = 0; i < mobMenTogs.length; i++) {
-    mobMenTogs[i].addEventListener("click", function(){
-      if (mobMenVis == false){
-        mobMenVis = true;
-        document.getElementById("navLinks").style.display = "inline-block";
-        document.getElementById("heroPage").style.opacity = "0.4";
-        document.getElementById("overlay").style.display = "block";
-        document.getElementById("overlay").style.opacity = "0.5";
-        document.getElementById("mobMenClose").style.display = "block";
-
-      } else {
-        mobMenVis = false;
+  // To open and close mobile menu while keeping laptop navbar present
+  function toggleMenu() {
+    if (menuType == "mobile") {
+      menVis == false ? menVis = true : menVis = false;
+    } else if (menuType == "laptop") {
+      menVis = true;
+    }
+    menuStyling();
+  }
+  
+  // Style mobile menu and background fade
+  function menuStyling() {
+    if (menuType == "mobile") {
+      if (menVis == false) {
         document.getElementById("navLinks").style.display = "none";
         document.getElementById("heroPage").style.opacity = "1";
         document.getElementById("overlay").style.display = "none";
         document.getElementById("overlay").style.opacity = "0";
         document.getElementById("mobMenClose").style.display = "none";
-        
-        // This loop hides all drop link contents after exiting the mobile menu, but they then can't be used
-        for (let i = 0; i < document.getElementsByClassName("dropLink").length; i++) {
-          document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
-        }
-      }
-    });
-  }
-  
-  // Open mobile dropLink content on click
-  let dropLinks = document.getElementsByClassName("dropLink");
-  for (let i = 0; i < dropLinks.length; i++) {
-    dropLinks[i].addEventListener("click", function() {
-      for (let i = 0; i < dropLinks.length; i++) {
-        document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
-        dropLinks[i].style.color = "var(--bgcol)";
-      }
-      this.getElementsByClassName("dropLinkContent")[0].style.display = "block";
-      this.style.color = "var(--logocol)";
-    });
-  }
-  
-  // Reset navbar after window resizes
-  window.addEventListener("resize", function() {
-    let whiteLinks = document.getElementsByTagName("li");
-    if (window.innerWidth > 710) {
-      document.getElementById("navLinks").style.display = "inline-block";
-      for (let i = 0; i < whiteLinks.length; i++) {
-        whiteLinks[i].style.color = "white";
+      } else {
+        document.getElementById("navLinks").style.display = "inline-block";
+        document.getElementById("heroPage").style.opacity = "0.4";
+        document.getElementById("overlay").style.display = "block";
+        document.getElementById("overlay").style.opacity = "0.5";
+        document.getElementById("mobMenClose").style.display = "block";
       }
     } else {
-      document.getElementById("navLinks").style.display = "none";
-      for (let i = 0; i < whiteLinks.length; i++) {
-        whiteLinks[i].style.color = "var(--bgcol)";
+      document.getElementById("navLinks").style.display = "inline-block";
+    }
+  }
+
+  // Ensure correct navbar menu form (mobile or laptop)
+  window.addEventListener("resize", menuTypeQuery);
+  
+  // Add menu toggle functionality
+  for (let i = 0; i < mobMenTogs.length; i++) {
+    mobMenTogs[i].addEventListener("click", toggleMenu);
+    mobMenTogs[i].addEventListener("click", closeDLC);
+  }
+  
+  // Open individual drop link content
+  function openDLC() {
+    closeDLC();
+    this.getElementsByClassName("dropLinkContent")[0].style.display = "block";
+    if (menuType == "mobile") {
+      this.style.color = "var(--logocol)";
+    }
+  }
+  
+  // Close all drop link content
+  function closeDLC() {
+    for (let i = 0; i < dlcTogs.length; i++) {
+      document.getElementsByClassName("dropLinkContent")[i].style.display = "none";
+      if (menuType == "mobile") {
+      document.getElementsByClassName("dropLink")[i].style.color = "var(--bgcol)";
+      } else {
+      document.getElementsByClassName("dropLink")[i].style.color = "white";
       }
     }
-  });
+  }
 
+  // Set whether dlc opens on hover or click (laptop or mobile)
+  function hovClick() {
+    if (menuType == "mobile") {
+      for (let i = 0; i < dlcTogs.length; i++) {
+        dlcTogs[i].addEventListener("click", openDLC);
+        dlcTogs[i].removeEventListener("mouseover", openDLC);
+        dlcTogs[i].removeEventListener("mouseout", closeDLC);
+      }
+    } else {
+      for (let i = 0; i < dlcTogs.length; i++) {
+        dlcTogs[i].addEventListener("mouseover", openDLC);
+        dlcTogs[i].addEventListener("mouseout", closeDLC);
+      }   
+    }
+  }
+  
+  // END OF WINDOW.ONLOAD
 };
+
 
 // Determine the exchange rate
 function exchange(sc, rc) {
@@ -144,9 +178,7 @@ function calc(val) {
   let transferSpeed = document.getElementById("transferSpeed").value;
   let fee = (0.8 + (inputValue - 0.8) * transferSpeed).toFixed(2);
   let convertValue = (val - fee).toFixed(2);
-  let outputValue = (
-    convertValue * exchange(exRate[inCurr], exRate[recCurr])
-  ).toFixed(2);
+  let outputValue = (convertValue * exchange(exRate[inCurr], exRate[recCurr])).toFixed(2);
   
   // Prevent NaN result (no calc on invalid input)
   if (val.match(/(?=\D)(?!\.)/) || val.match(/\.(.{3}|.*\.)/)) {
@@ -187,3 +219,6 @@ function resetInput(val) {
   val == "" ? (inputValue = "1000") : (inputValue = val);
   calc(inputValue);
 }
+
+
+// NEXT FEATURE: Reverse calculation, so user input's receive value and is told how much to send

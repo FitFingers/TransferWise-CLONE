@@ -2,12 +2,14 @@
 let month = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
 let detVis = false;
 let inputValue = "1000";
+
 let exRate = {
   EUR: 1,
   GBP: 0.90032,
   USD: 1.14541,
   INR: 80.3551
 };
+
 
 // Page load variable declaration and event handlers
 window.onload = function() {
@@ -110,8 +112,9 @@ function calc(val) {
     document.getElementById("recCurr").style.borderRadius = "0 3px 0 0";
     document.getElementById("insuffFundsText").innerHTML =
       "Please enter an amount more than 0.01 " + recCurr;
+
   } else {
-    // Reset "minimum value" error styling to initial
+    // Error reset to initial
     document.getElementById("insuffFunds").style.display = "none";
     document.getElementById("receiveValue").classList.remove("cashBoxError");
     document.getElementById("receiveText").style.color = "var(--shapecol)";
@@ -128,7 +131,7 @@ function calc(val) {
   }
 }
 
-// Set input to default (1,000) when left blank
+// Set input to default (1,000) when blank
 function resetInput(val) {
   document.getElementById("inputValue").placeholder = "1,000";
   val == "" ? (inputValue = "1000") : (inputValue = val);

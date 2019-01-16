@@ -33,7 +33,7 @@ body {
   overflow: hidden;
 }
 
-#bgsquare {
+#bg-square {
   background: var(--shapecol);
   position: absolute;
   bottom: -20px;
@@ -42,7 +42,7 @@ body {
   z-index: 0;
 }
 
-#bgsquare::after {
+#bg-square::after {
   content: "";
   position: absolute;
   right: 0;
@@ -50,7 +50,7 @@ body {
   border-bottom: 45vh solid var(--bgcol);
 }
 
-#bgcircle {
+#bg-circle {
   background: var(--shapecol);
   position: absolute;
   left: 60%;
@@ -62,7 +62,7 @@ body {
   z-index: 0;
 }
 
-#bgcircle::after {
+#bg-circle::after {
   content: "";
   background: white;
   position: absolute;
@@ -80,7 +80,7 @@ body {
   z-index: 3;
 }
 
-#mobileMenuIcon {
+#mobile-menu-button {
   display: none;
   float: left;
   background: url(https://archive.li/ktlVH/ea77e5dbf135f7cdb101213a677a98ba8c1f7c55.png);
@@ -92,7 +92,7 @@ body {
   cursor: pointer;
 }
 
-#logoBox {
+#transferwise-logo {
   float: left;
   background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TransferWise_logo.svg/2000px-TransferWise_logo.svg.png);
   background-size: contain;
@@ -102,11 +102,11 @@ body {
   width: 112px;
 }
 
-.menuIcons {
+.mobile-menu-icons {
   display: none;
 }
 
-#navLinks {
+#navbar-links {
   display: inline-block;
   float: right;
   list-style: none;
@@ -120,17 +120,17 @@ li {
   margin: 0 -2px;
 }
 
-.dropLink {
+.drop-down-link {
   position: relative;
   cursor: pointer;
 }
 
-#logInLink:hover {
+#login-link:hover {
   cursor: pointer;
   color: var(--logocol);
 }
 
-.dropLinkContent {
+.drop-link-content {
   display: none;
   position: absolute;
   background: white;
@@ -141,7 +141,7 @@ li {
   box-shadow: 0 0 30px 8px rgba(0, 0, 0, 0.1);
 }
 
-.dropLinkContent::after {
+.drop-link-content::after {
   content: "▲";
   position: absolute;
   top: -11px;
@@ -149,7 +149,7 @@ li {
   color: white;
 }
 
-.dropLinkContent a {
+.drop-link-content a {
   display: block;
   padding: 16px 12px;
   white-space: nowrap;
@@ -159,11 +159,11 @@ li {
   color: #283b60;
 }
 
-.dropLinkContent a:hover {
+.drop-link-content a:hover {
   background: var(--linkcol);
 }
 
-#signupLink {
+#signup-link {
   background: #8797b2;
   position: relative;
   float: right;
@@ -174,12 +174,12 @@ li {
   font-weight: bold;
 }
 
-#signupLink:hover {
+#signup-link:hover {
   background: var(--darkblue);
   color: var(--logocol);
 }
 
-#overlay {
+#mobile-menu-overlay {
   background: black;
   display: none;
   position: fixed;
@@ -191,7 +191,7 @@ li {
 }
 
 /* Main content: Hero page */
-#heroPage {
+#landing-page {
   position: relative;
   margin: 14vh auto 34px auto;
   width: 90%;
@@ -199,7 +199,7 @@ li {
   z-index: 1;
 }
 
-#leftBox {
+#information-container {
   float: left;
   display: flex;
   flex-direction: column;
@@ -216,21 +216,21 @@ h1::after {
   color: var(--logocol);
 }
 
-#introDetails {
+#service-description {
   margin: 4vh 0 6vh 0;
   line-height: 22px;
 }
 
-#introDetails p {
+#service-description p {
   letter-spacing: 0.04em;
 }
 
-#leftBox a {
+#information-container a {
   color: var(--logocol);
   font-weight: bold;
 }
 
-.howItWorks {
+.how-it-works-button {
   background: var(--bgcol);
   padding: 12px;
   line-height: 16px;
@@ -241,13 +241,13 @@ h1::after {
   font-weight: bold;
 }
 
-.howItWorks:hover {
+.how-it-works-button:hover {
   background: var(--logocol);
   color: white;
   cursor: pointer;
 }
 
-#accBox {
+#accreditation-container {
   margin: 100px 0 0 0;
   width: 100%;
   line-height: 22px;
@@ -271,16 +271,16 @@ h1::after {
   width: 70px;
 }
 
-#tuvacc {
+#tuev-figure {
   float: left;
 }
 
-#custacc {
+#customer-figure {
   float: right;
 }
 
 /* Right side of page */
-#rightBox {
+#floating-calculator {
   background: var(--bgcol);
   float: right;
   margin: 0 0 34px 2%;
@@ -291,13 +291,13 @@ h1::after {
     1px 3px 30px 0 rgb(55, 81, 126, 0.7);
 }
 
-#tabs {
+#money-tab-container {
   background: #253655;
   display: flex;
   justify-content: space-between;
 }
 
-.tab {
+.money-tab {
   background: linear-gradient(35deg, #25375f, #2c4060);
   padding: 20px 0;
   line-height: 27px;
@@ -307,47 +307,43 @@ h1::after {
   flex: 1;
 }
 
-.tab:hover {
+.money-tab:hover {
   background: var(--darkblue);
 }
 
-.tabText {
+.tab-text {
   text-decoration: none;
   font-size: 15px;
   font-weight: bold;
   color: white;
 }
 
-.tabIcon {
+.tab-icon {
   color: var(--logocol);
 }
 
-.selectedTab, .selectedTab:hover, .selectedTab p {
+.selected-tab, .selected-tab:hover, .selected-tab p {
   background: var(--bgcol);
   color: white;
 }
 
-.tabContents {
+.tab-contents {
   position: relative;
   display: block;
   margin: 34px;
 }
 
-#sendTabContent {
-  
-}
-
-#receiveTabContent {
+#receive-money-tab-content {
   display: none;
   height: 340px;
 }
 
-#debitTabContent {
+#debit-card-tab-content {
   display: none;
   height: 360px;
 }
 
-.cashBox {
+.cash-value-box {
   background: white;
   position: relative;
   display: inline-block;
@@ -355,15 +351,15 @@ h1::after {
   border-radius: 4px;
 }
 
-.cashBox:hover {
+.cash-value-box:hover {
   box-shadow: 0 0 1px 1px var(--logocol);
 }
 
-.cashBoxError {
+.cash-value-box-error {
   box-shadow: 0 0 0px 1.5px #C73B3B;
 }
 
-.cashBox p {
+.cash-value-box p {
   padding: 9px 7px 0 7px;
   margin-left: 2px;
   width: 70%;
@@ -371,7 +367,7 @@ h1::after {
   color: var(--shapecol);
 }
 
-.cashBox input[type="text"] {
+.cash-value-box input[type="text"] {
   padding: 0 7px 9px 7px;
   width: 70%;
   color: #2e4369;
@@ -380,40 +376,40 @@ h1::after {
   border-radius: 4px;
 }
 
-.cashBox input[type="text"]::placeholder {
+.cash-value-box input[type="text"]::placeholder {
   color: #2e4369;
   opacity: 1;
 }
 
-.cashBox input[type="text"]:focus {
+.cash-value-box input[type="text"]:focus {
   outline: none;
 }
 
-#receiveValue {
+#receive-money-output-box {
   margin-top: 6px;
 }
 
-#insuffFunds {
+#insufficient-amount-error {
   display: none;
   position: relative;
   background: #FFDFDF;
   border-radius: 0 0 3px 3px;
 }
 
-#insuffFunds::before {
+#insufficient-amount-error::before {
   content: "▲";
   position: absolute;
   margin: -16px 0 0 16px;
   color: #FFDFDF;
 }
 
-#insuffFunds p {
+#insufficient-amount-error-text {
   padding: 5px 15px;
   width: 99%;
   color: #C73B3B;
 }
 
-.currButton {
+.currency-select {
   background: #2e4369;
   position: absolute;
   right: 0;
@@ -428,7 +424,7 @@ h1::after {
   font-weight: bold;
 }
 
-#bgline {
+#fee-bullet-point-line {
   background: #253655;
   position: absolute;
   left: 16px;
@@ -437,7 +433,7 @@ h1::after {
   height: 150px;
 }
 
-.bgLineCircle {
+.fee-bullet-point-circle {
   background: #253655;
   position: absolute;
   margin-left: -3px;
@@ -446,26 +442,26 @@ h1::after {
   border-radius: 50%;
 }
 
-#bgCir1 {
+#fee-bullet-point-1 {
   margin-top: 60px;
 }
 
-#bgCir2 {
+#fee-bullet-point-2 {
   margin-top: 90px;
 }
 
-#bgCir3 {
+#fee-bullet-point-3 {
   margin-top: 120px;
 }
 
-#newCalcGrid {
+#fee-breakdown-grid {
   display: grid;
   grid-template-columns: max-content auto;
   grid-template-rows: 30px 0px 30px;
   margin-left: 30px;
 }
 
-#feeButton {
+#show-fee-button {
   position: relative;
   display: inline-block;
   margin: 16px 9px;
@@ -474,19 +470,19 @@ h1::after {
   color: var(--logocol);
 }
 
-#feeButton::before {
+#show-fee-button::before {
   content: "▼ ";
 }
 
-#fee {
+#fee-value {
   font-weight: bold;
 }
 
-.feeDetails {
+.fee-details {
   visibility: hidden;
 }
 
-#newCalcGrid select {
+#fee-breakdown-grid select {
   background: #2e4369;
   padding: 5px;
   margin-top: -5px;
@@ -497,29 +493,29 @@ h1::after {
   font-size: 13px;
 }
 
-#newCalcGrid a {
+#fee-breakdown-grid a {
   text-decoration: none;
   border-bottom: 1px dotted var(--logocol);
   color: #d3d5d8;
 }
 
-#convert {
+#amount-to-convert {
   margin-right: 5px;
 }
 
-#savings p {
+#savings-container p {
   margin: 20px 0;
   line-height: 22px;
 }
 
-#doubleButtons {
+#compare-get-started-container {
   display: flex;
   justify-content: space-between;
   margin-bottom: 34px;
 }
 
-#compareButton,
-#getStartedButton {
+#compare-button,
+#get-started-button {
   flex: 1;
   padding: 13px;
   min-height: 40px;
@@ -529,32 +525,32 @@ h1::after {
   font-weight: bold;
 }
 
-#compareButton {
+#compare-button {
   background: var(--logocol);
   margin-right: 10px;
 }
 
-#compareButton:hover {
+#compare-button:hover {
   background: #00a4df;
 }
 
-#getStartedButton {
+#get-started-button {
   background: var(--buttoncol);
   margin-left: 10px;
 }
 
-#getStartedButton:hover {
+#get-started-button:hover {
   background: #28b862;
 }
 
-#HIWmobileButton {
+#how-it-works-mobile-button {
   display: none;
   margin: auto;
 }
 
 /* Media queries */
 @media only screen and (max-width: 925px) {
-  #logoBox {
+  #transferwise-logo {
     background-image: url(https://s3-us-west-1.amazonaws.com/chuladoblog/blog/wp-content/uploads/20181030041255/transferwise-logo.png);
     width: 22px;
     height: 22px;
@@ -568,48 +564,49 @@ h1::after {
     margin-bottom: 30px;
   }
 
-  #introDetails,
-  #HIWlaptopButton,
-  #accBox,
-  #bgsquare,
-  #bgcircle {
+  #service-description,
+  #how-it-works-laptop-button,
+  #accreditation-container,
+  #bg-square,
+  #bg-circle {
     display: none;
   }
 
-  #heroPage {
+  #landing-page {
     width: 80%;
   }
 
-  #leftBox {
+  #information-container {
     float: none;
     width: 100%;
     align-items: center;
   }
 
-  #rightBox {
+  #floating-calculator {
     float: none;
     width: 100%;
     margin-left: 0;
   }
 
-  #HIWmobileButton {
+  #how-it-works-mobile-button {
     display: block;
   }
 }
 
+/* Media queries: mobile screens */
 @media only screen and (max-width: 710px) {
-  #logoBox {
+  #transferwise-logo {
     background-image: url(https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/TransferWise_logo.svg/2000px-TransferWise_logo.svg.png);
     margin-left: 32px;
     height: 20px;
     width: 112px;
   }
 
-  #mobileMenuIcon {
+  #mobile-menu-button {
     display: inline-block;
   }
   
-  #mobMenClose {
+  #mobile-menu-close {
     position: absolute;
     display: none;
     top: 10px;
@@ -621,11 +618,11 @@ h1::after {
     z-index: 3;
   }
   
-  #mobMenClose:hover {
+  #mobile-menu-close:hover {
     color: #0082ce;
   }
   
-  #navLinks {
+  #navbar-links {
     background: white;
     display: none;
     position: fixed;
@@ -637,7 +634,7 @@ h1::after {
     width: 276px;
   }
   
-  #navLinks li {
+  #navbar-links li {
     display: block;
     padding: 18px 26px;
     margin-top: -8px;
@@ -647,14 +644,18 @@ h1::after {
     text-align: left;
   }
   
-  .menuIcons {
+  #navbar-links li:focus {
+    outline: none;
+  }
+  
+  .mobile-menu-icons {
     display: inline-block;
     margin-right: 6px;
     font-size: 22px;
     color: var(--bgcol);
   }
   
-  .dropLinkContent {
+  .drop-link-content {
     display: none;
     position: relative;
     margin: 8px -20px -16px -20px;
@@ -662,11 +663,11 @@ h1::after {
     font-size: 14px;
   }
   
-  .dropLinkContent a {
+  .drop-link-content a {
     padding: 10px 12px;
   }
 
-  #signupLink {
+  #signup-link {
     margin: 11px 0;
   }
 
@@ -676,56 +677,56 @@ h1::after {
     margin-bottom: 38px;
   }
 
-  p, #newCalcGrid {
+  p, #fee-breakdown-grid {
     font-size: 13px;
   }
   
-  .tabIcon {
+  .tab-icon {
     font-size: 16px;
   }
 
-  #newCalcGrid select {
+  #fee-breakdown-grid select {
     margin-top: 0px;
     font-size: 12px;
   }
 
-  #newCalcGrid {
+  #fee-breakdown-grid {
     grid-template-columns: 88px auto;
     align-items: center;
   }
 
-  #feeButton {
+  #show-fee-button {
     margin-left: 11px;
   }
 
-  #doubleButtons {
+  #compare-get-started-container {
     flex-direction: column;
   }
 
-  #compareButton,
-  #getStartedButton {
+  #compare-button,
+  #get-started-button {
     margin: 0 0 10px 0;
   }
 
-  #HIWmobileButton {
+  #how-it-works-mobile-button {
     margin-top: -14px;
   }
 }
 
 @media only screen and (max-width: 570px) {
-  #heroPage {
+  #landing-page {
     width: 100%;
   }
 
-  #leftBox {
+  #information-container {
     padding: 0 3%;
   }
 
-  .tabContents {
+  .tab-contents {
     margin: 34px 8px;
   }
   
-  .tabText {
+  .tab-text {
     font-size: 13px;
   }
 }

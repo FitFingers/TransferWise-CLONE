@@ -130,10 +130,6 @@ li {
   color: var(--logocol);
 }
 
-.dropLink:hover .dropLinkContent {
-  display: block;
-}
-
 .dropLinkContent {
   display: none;
   position: absolute;
@@ -172,7 +168,7 @@ li {
   position: relative;
   float: right;
   padding: 6px 12px;
-  margin: 11px 0 0 -4px;
+  margin-top: 11px;
   border-radius: 2px;
   font-size: 13px;
   font-weight: bold;
@@ -658,7 +654,7 @@ h1::after {
     color: var(--bgcol);
   }
   
-  .dropLink:hover .dropLinkContent, .dropLinkContent {
+  .dropLinkContent {
     display: none;
     position: relative;
     margin: 8px -20px -16px -20px;

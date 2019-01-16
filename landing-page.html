@@ -1,5 +1,7 @@
 <head>
   <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <link href="styles/landing-page.css" rel="stylesheet" type="text/css">
+  <script src="scripts/landing-page.js" type="text/javascript"></script>
 </head>
 
 <body>
@@ -10,9 +12,7 @@
 
     <!-- Navigation bar -->
     <nav id="navbar">
-      <a href="#">
-        <div id="mobileMenuIcon"></div>
-      </a>
+      <div id="mobileMenuIcon"></div>      
       <a href="#">
         <div id="logoBox"></div>
       </a>
@@ -106,22 +106,22 @@
         <!-- Right side of hero page -->
         <div id="rightBox">
           <div id="tabs">
-            <a href="#" id="sendTab" class="tab">
+            <span id="sendTab" class="tab selectedTab">
               <p class="tabIcon">̥↗</p>
               <p class="tabText">Send money</p>
-            </a>
-            <a href="#" id="receiveTab" class="tab">
+            </span>
+            <span id="receiveTab" class="tab">
               <p class="tabIcon">̥↙</p>
               <p class="tabText">Receive money</p>
-            </a>
-            <a href="#" id="debitTab" class="tab">
+            </span>
+            <span id="debitTab" class="tab">
               <p class="tabIcon">⇄</p>
               <p class="tabText">Debit card</p>
-            </a>
+            </span>
           </div>
 
           <!-- Rightbox calculator-->
-          <div id="calculator">
+          <div id="sendTabContent" class="tabContents">
 
             <div id="sendValue" class="cashBox">
               <select id="inCurr" name="inCurr" class="currButton">
@@ -133,64 +133,66 @@
 
               <p>You send</p>
               <input id="inputValue" oninput="calc(this.value)" type="text" onfocus="this.placeholder=''" onblur="resetInput(this.value)"></input>
-          </div>
+            </div>
 
-          <div id="bgline">
-            <div id="bgCir1" class="bgLineCircle"></div>
-            <div id="bgCir2" class="bgLineCircle"></div>
-            <div id="bgCir3" class="bgLineCircle"></div>
-          </div>
+            <div id="bgline">
+              <div id="bgCir1" class="bgLineCircle"></div>
+              <div id="bgCir2" class="bgLineCircle"></div>
+              <div id="bgCir3" class="bgLineCircle"></div>
+            </div>
 
-          <!-- Fee breakdown section -->
-          <div id="feeText">
-            <p id="feeButton">Show fee breakdown</p>
+            <!-- Fee breakdown section -->
+            <div id="feeText">
+              <p id="feeButton">Show fee breakdown</p>
 
-            <div id="newCalcGrid">
-              <p id="fee"></p>
-              <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
+              <div id="newCalcGrid">
+                <p id="fee"></p>
+                <p><select id="transferSpeed"><option value="0.005">Fast and easy transfer</option>
                 <option value="0.003">Low cost transfer</option>
                 </select> fee</p>
 
-              <p id="convert" class="feeDetails"></p>
-              <p class="feeDetails">Amount we'll convert</p>
+                <p id="convert" class="feeDetails"></p>
+                <p class="feeDetails">Amount we'll convert</p>
 
-              <p id="exRate"></p>
-              <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
+                <p id="exRate"></p>
+                <p><a id="guarantee" href="#">Guaranteed rate</a> (80 hrs)</p>
+              </div>
             </div>
-          </div>
 
-          <div id="receiveValue" class="cashBox">
-            <select id="recCurr" name="recCurr" class="currButton">
+            <div id="receiveValue" class="cashBox">
+              <select id="recCurr" name="recCurr" class="currButton">
               <option name="recCurr" value="EUR">🇪🇺 EUR</option>
               <option name="recCurr" value="GBP" selected>🇬🇧 GBP</option>
               <option name="recCurr" value="USD">🇺🇸 USD</option>
               <option name="recCurr" value="INR">🇮🇳 INR</option>
             </select>
 
-            <p id="receiveText">Recipient gets</p>
-            <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
+              <p id="receiveText">Recipient gets</p>
+              <input id="outputValue" type="text" onfocus="this.placeholder=''"></input>
 
-          <div id="insuffFunds">
-            <p id="insuffFundsText"></p>
+              <div id="insuffFunds">
+                <p id="insuffFundsText"></p>
+              </div>
+            </div>
+
+            <div id="savings">
+              <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
+            </div>
+
+            <div id="doubleButtons">
+              <button id="compareButton">Compare price</button>
+              <button id="getStartedButton">Get started</button>
+            </div>
+
           </div>
+          <div id="receiveTabContent" class="tabContents"><div><p>Hello world!</p></div></div>
+          <div id="debitTabContent" class="tabContents"><div><p>This <em>is</em> only a demo, you know...</p></div></div>
         </div>
-
-
-        <div id="savings">
-          <p>You could save up to: <b id="saveValue"></b><br>Should arrive <b id="speedText">in seconds!</b></p>
-        </div>
-
-        <div id="doubleButtons">
-          <button id="compareButton">Compare price</button>
-          <button id="getStartedButton">Get started</button>
-        </div>
-
+    
         <button id="HIWmobileButton" class="howItWorks">⯈ How it works</button>
-        </div>
-      </div>
 
-    </section>
-  </main>
-</div>
+      </section>
+    </main>
+  </div>
 
 </body>

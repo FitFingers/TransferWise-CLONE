@@ -18,6 +18,7 @@ const RECEIVE_TEXT = document.getElementById("receive-text");
 const INSUFF_ERROR = document.getElementById("insufficient-amount-error");
 const INSUFF_TEXT = document.getElementById("insufficient-amount-error-text");
 const ARRIVAL_TIME = document.getElementById("arrival-time");
+const CLICKABLE_OBJECTS = document.querySelectorAll("[tabindex]");
 
 const BASE_CHARGE = 0.8;
 const MONTH = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -204,6 +205,11 @@ function setArrivalTime() {
   runCalculator();
 }
 
+function removeMouseFocus() {
+  [...CLICKABLE_OBJECTS].map(obj => obj.classList.remove("removeMouseFocus"));
+  this.classList.add("removeMouseFocus");
+}
+
 // Determine the correct event and assign event listener to drop links
 function setToggleType() {
   [...DROP_LINK].map(droplink => determineToggleType(droplink));
@@ -236,6 +242,8 @@ document.getElementById("show-fee-button").addEventListener("click", toggleFeeBr
 
 [...MAIN_TABS].map(tab => tab.addEventListener("click", openTab));
 
+[...CLICKABLE_OBJECTS].map(obj => obj.addEventListener("click", removeMouseFocus));
+
 [...MOBILE_MENU_TOGGLES].map(function(toggle) {
   toggle.addEventListener("click", toggleMobileMenu);
   toggle.addEventListener("click", closeDropLinks);
@@ -250,9 +258,7 @@ window.onload = function() {
   menuTypeQuery();
 }
 
-// NEXT FEATURE: Reverse calculation, so user input's receive value and is told how much to send
-
-// NEXT FEATURE: No outline on click, outline only on lastkey=tab
+// NEXT FEATURE: Reverse calculation, so user inputs receive value and is told how much to send
 
 // NEXT FEATURE: Check on date setup (does date rollover months correctly?)
 

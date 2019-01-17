@@ -190,6 +190,10 @@ li {
   cursor: pointer;
 }
 
+.removeMouseFocus {
+  outline: none;
+}
+
 /* Main content: Hero page */
 #landing-page {
   position: relative;
@@ -642,10 +646,6 @@ h1::after {
     color: var(--bgcol);
     font-size: 16px;
     text-align: left;
-  }
-  
-  #navbar-links li:focus {
-    outline: none;
   }
   
   .mobile-menu-icons {

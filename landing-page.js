@@ -154,7 +154,7 @@ function isThereAnError(val) {
     INSUFF_ERROR.style.display = "none";
     RECEIVE_TEXT.style.color = "var(--shapecol)";
     OUTPUT_CONT.classList.remove("cash-value-box-error");
-    OUT_CURRENCY.style.height = "initial";
+    OUT_CURRENCY.style.height = "100%";
     OUT_CURRENCY.style.borderRadius = "0 3px 3px 0";
     return false;
   }
